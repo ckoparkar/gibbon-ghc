@@ -1,0 +1,6 @@
+((haskell-mode . ((tab-width . 4)
+                  (haskell-indentation-layout-offset . 4)
+                  (haskell-indentation-left-offset . 4)
+                  (haskell-indentation-starter-offset . 4)
+                  (haskell-indentation-where-pre-offset . 2)
+                  (haskell-indentation-where-post-offset . 2))))
