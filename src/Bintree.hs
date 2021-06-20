@@ -1,3 +1,5 @@
+{-# LANGUAGE Strict #-}
+
 module Bintree ( buildTree, sumTree, printTree ) where
 
 import Gibbon.Prim
@@ -12,34 +14,34 @@ nodeTag :: Tag
 {-# INLINE nodeTag #-}
 nodeTag = 1
 
-buildTree :: Cursor a -> Int -> IO (Cursor a)
+buildTree :: Cursor a -> Int -> (Cursor a)
 buildTree outcur n =
   case n of
-    0 -> do !outcur1 <- writeTag outcur leafTag
-            !outcur2 <- writeInt64 outcur1 1
-            pure $! outcur2
-    _ -> do !outcur1 <- writeTag outcur nodeTag
-            !outcur2 <- buildTree outcur1 (n-1)
-            !outcur3 <- buildTree outcur2 (n-1)
-            pure $! outcur3
+    0 -> let outcur1 = writeTag outcur leafTag
+             outcur2 = writeInt64 outcur1 1
+         in outcur2
+    _ -> let outcur1 = writeTag outcur nodeTag
+             outcur2 = buildTree outcur1 (n-1)
+             outcur3 = buildTree outcur2 (n-1)
+         in outcur3
 
-sumTree :: Cursor a -> IO (Int64, Cursor a)
-sumTree !incur = do
-    (!tag, incur1) <- readTag incur
+sumTree :: Cursor a -> (Int64, Cursor a)
+sumTree incur = do
+    let (!tag, incur1) = readTag incur
     if tag `eqTag` leafTag
-        then do (!i,incur2) <- {-# SCC sumLeaf #-} readInt64 incur1
-                pure $! (i,incur2)
+        then let (!i,incur2) = {-# SCC sumLeaf #-} readInt64 incur1
+             in (i,incur2)
         else if tag `eqTag` nodeTag
-                 then do (!i,incur2) <- {-# SCC sumLeft #-} sumTree incur1
-                         (!j,incur3) <- {-# SCC sumRight #-} sumTree incur2
-                         pure $! (i+j,incur3)
+                 then let (!i,incur2) = {-# SCC sumLeft #-} sumTree incur1
+                          (!j,incur3) = {-# SCC sumRight #-} sumTree incur2
+                      in (i+j,incur3)
                  else error ("sumTree: unknown tag " ++ show tag)
 
 printTree :: Cursor a -> IO (Cursor a)
 printTree incur = do
-    (tag, incur1) <- readTag incur
+    let (!tag, incur1) = readTag incur
     if tag `eqTag` leafTag
-        then do (i, incur2) <- readInt64 incur1
+        then do let (i, incur2) = readInt64 incur1
                 putStr ("(Leaf " ++ show i ++ ")")
                 pure incur2
         else if tag `eqTag` nodeTag

@@ -14,6 +14,11 @@ import GHC.Base              ( IO(..), plusAddr#
                              )
 import GHC.Int               ( Int8(..), Int64(..), eqInt8 )
 import Foreign.Marshal.Alloc ( mallocBytes )
+import GHC.IO                ( unsafeDupablePerformIO )
+
+-- import Foreign.Storable
+-- import GHC.Ptr
+-- import GHC.Int               ( Int(..))
 
 --------------------------------------------------------------------------------
 
@@ -29,29 +34,42 @@ allocRegion :: Int -> IO (Region a)
 {-# INLINE allocRegion #-}
 allocRegion = mallocBytes
 
-readTag :: Cursor a -> IO (Tag, Cursor a)
+readTag :: Cursor a -> (Tag, Cursor a)
 {-# INLINE readTag #-}
-readTag (Ptr addr) = IO $ \s ->
-    case readInt8OffAddr# addr 0# s of
-        (# s2, x #) -> (# s2, (I8# x, Ptr (plusAddr# addr 1#)) #)
+readTag (Ptr addr) =
+    unsafeDupablePerformIO $ IO $ \s ->
+        case readInt8OffAddr# addr 0# s of
+            (# s2, x #) -> (# s2, (I8# x, Ptr (plusAddr# addr 1#)) #)
+    -- let !v = unsafeDupablePerformIO (peek (Ptr addr))
+    -- in (v, Ptr addr `plusPtr` 1)
 
-writeTag :: Cursor a -> Tag -> IO (Cursor a)
+writeTag :: Cursor a -> Tag -> Cursor a
 {-# INLINE writeTag #-}
-writeTag (Ptr addr) (I8# t) = IO $ \s ->
-    case writeInt8OffAddr# addr 0# t s of
-        s2 -> (# s2, Ptr (plusAddr# addr 1#) #)
+writeTag (Ptr addr) (I8# t) =
+    unsafeDupablePerformIO $ IO $ \s ->
+        case writeInt8OffAddr# addr 0# t s of
+            s2 -> (# s2, Ptr (plusAddr# addr 1#) #)
+    -- unsafeDupablePerformIO (poke (Ptr addr) (I8# t)) `seq`
+    --    (Ptr addr `plusPtr` 1)
 
-readInt64 :: Cursor a -> IO (Int64, Cursor a)
+
+readInt64 :: Cursor a -> (Int64, Cursor a)
 {-# INLINE readInt64 #-}
-readInt64 (Ptr addr) = IO $ \s ->
-    case readInt64OffAddr# addr 0# s of
-        (# s2, x #) -> (# s2, (I64# x, Ptr (plusAddr# addr 8#)) #)
+readInt64 (Ptr addr) =
+    unsafeDupablePerformIO $ IO $ \s ->
+        case readInt64OffAddr# addr 0# s of
+            (# s2, x #) -> (# s2, (I64# x, Ptr (plusAddr# addr 8#)) #)
+    -- let !v = unsafeDupablePerformIO (peek (Ptr addr))
+    -- in (v, Ptr addr `plusPtr` 8)
 
-writeInt64 :: Cursor a -> Int64 -> IO (Cursor a)
+writeInt64 :: Cursor a -> Int64 -> Cursor a
 {-# INLINE writeInt64 #-}
-writeInt64 (Ptr addr) (I64# i) = IO $ \s ->
-    case writeInt64OffAddr# addr 0# i s of
-        s2 -> (# s2, Ptr (plusAddr# addr 8#) #)
+writeInt64 (Ptr addr) (I64# i) =
+    unsafeDupablePerformIO $ IO $ \s ->
+        case writeInt64OffAddr# addr 0# i s of
+            s2 -> (# s2, Ptr (plusAddr# addr 8#) #)
+    -- unsafeDupablePerformIO (poke (Ptr addr) (I64# i)) `seq`
+    --    (Ptr addr `plusPtr` 8)
 
 sizeofTag :: Int64
 {-# INLINE sizeofTag #-}
