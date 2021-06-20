@@ -1,3 +1,5 @@
+{-# LANGUAGE LinearTypes #-}
+
 module Main where
 
 -- import Criterion.Main
@@ -36,11 +38,10 @@ bench_main = do
   putStrLn "buildTree/25"
   (_res,selftimed1,batchtime1) <- bench (buildTree out) 25
   putStrLn ("SELFTIMED: " ++ show selftimed1 ++ "\nBATCHTIME: " ++ show batchtime1)
-
-  putStrLn ""
+  let (n,_) = sumTree out
+  putStrLn $ "SUM: " ++ show n
 
   -- let !_out1 = buildTree out 25
-
   putStrLn "sumTree/25"
   (res,selftimed2,batchtime2) <- bench sumTree out
   putStrLn ("SELFTIMED: " ++ show selftimed2 ++ "\nBATCHTIME: " ++ show batchtime2 ++ "\n" ++ show res)
@@ -58,7 +59,7 @@ bench_main = do
 
 --------------------------------------------------------------------------------
 
-bench :: (NFData a, NFData b) => (a -> b) -> a -> IO (b, Double, Double)
+bench :: (NFData a, NFData b) => (a %n-> b) -> a -> IO (b, Double, Double)
 bench f arg = do
     let !arg2 = force arg
         iters = 9
@@ -67,7 +68,7 @@ bench f arg = do
          batchtime = sum times
     return $! (last results, selftimed, batchtime)
 
-dotrial :: (NFData a, NFData b) => (a -> b) -> a -> IO (b, Double)
+dotrial :: (NFData a, NFData b) => (a %n-> b) -> a -> IO (b, Double)
 {-# NOINLINE dotrial #-}
 dotrial f arg = do
     performMajorGC
@@ -79,7 +80,7 @@ dotrial f arg = do
     return $! (a,delt)
 
 
-benchIO :: (NFData a, NFData b) => (a -> IO b) -> a -> IO (b, Double, Double)
+benchIO :: (NFData a, NFData b) => (a %n-> IO b) -> a -> IO (b, Double, Double)
 benchIO f arg = do
     let !arg2 = force arg
         iters = 9
@@ -88,7 +89,7 @@ benchIO f arg = do
          batchtime = sum times
     return $! (last results, selftimed, batchtime)
 
-dotrialIO :: (NFData a, NFData b) => (a -> IO b) -> a -> IO (b, Double)
+dotrialIO :: (NFData a, NFData b) => (a %n-> IO b) -> a -> IO (b, Double)
 {-# NOINLINE dotrialIO #-}
 dotrialIO f arg = do
     performMajorGC

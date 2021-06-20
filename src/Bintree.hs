@@ -3,6 +3,7 @@
 module Bintree ( buildTree, sumTree, printTree ) where
 
 import Gibbon.Prim
+import Prelude.Linear        ( Ur(..) )
 
 --------------------------------------------------------------------------------
 
@@ -27,9 +28,9 @@ buildTree outcur n =
 
 sumTree :: Cursor a -> (Int64, Cursor a)
 sumTree incur = do
-    let (!tag, incur1) = readTag incur
+    let ((Ur tag), incur1) = readTag incur
     if tag `eqTag` leafTag
-        then let (!i,incur2) = {-# SCC sumLeaf #-} readInt64 incur1
+        then let (Ur !i,incur2) = {-# SCC sumLeaf #-} readInt64 incur1
              in (i,incur2)
         else if tag `eqTag` nodeTag
                  then let (!i,incur2) = {-# SCC sumLeft #-} sumTree incur1
@@ -39,9 +40,9 @@ sumTree incur = do
 
 printTree :: Cursor a -> IO (Cursor a)
 printTree incur = do
-    let (!tag, incur1) = readTag incur
+    let (Ur !tag, incur1) = readTag incur
     if tag `eqTag` leafTag
-        then do let (i, incur2) = readInt64 incur1
+        then do let (Ur i, incur2) = readInt64 incur1
                 putStr ("(Leaf " ++ show i ++ ")")
                 pure incur2
         else if tag `eqTag` nodeTag
