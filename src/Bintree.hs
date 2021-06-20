@@ -1,9 +1,11 @@
-{-# LANGUAGE Strict #-}
+-- {-# LANGUAGE Strict      #-}
+{-# LANGUAGE LinearTypes #-}
 
 module Bintree ( buildTree, sumTree, printTree ) where
 
 import Gibbon.Prim
-import Prelude.Linear        ( Ur(..) )
+import Prelude.Linear ( (&), lseq, Ur(..) )
+import qualified Unsafe.Linear as Unsafe
 
 --------------------------------------------------------------------------------
 
@@ -15,32 +17,36 @@ nodeTag :: Tag
 {-# INLINE nodeTag #-}
 nodeTag = 1
 
-buildTree :: Cursor a -> Int -> (Cursor a)
-buildTree outcur n =
+buildTree :: Cursor a %1-> Int -> Cursor a
+buildTree !outcur !n =
   case n of
-    0 -> let outcur1 = writeTag outcur leafTag
-             outcur2 = writeInt64 outcur1 1
-         in outcur2
-    _ -> let outcur1 = writeTag outcur nodeTag
-             outcur2 = buildTree outcur1 (n-1)
-             outcur3 = buildTree outcur2 (n-1)
-         in outcur3
+    0 -> writeTag outcur leafTag &
+             \(!outcur1) ->
+                 writeInt64 outcur1 1
+    _ -> writeTag outcur nodeTag &
+             \(!outcur1) ->
+                 buildTree outcur1 (n-1) &
+                     \(!outcur2) ->
+                         buildTree outcur2 (n-1)
 
-sumTree :: Cursor a -> (Int64, Cursor a)
-sumTree incur = do
-    let ((Ur tag), incur1) = readTag incur
-    if tag `eqTag` leafTag
-        then let (Ur !i,incur2) = {-# SCC sumLeaf #-} readInt64 incur1
-             in (i,incur2)
-        else if tag `eqTag` nodeTag
-                 then let (!i,incur2) = {-# SCC sumLeft #-} sumTree incur1
-                          (!j,incur3) = {-# SCC sumRight #-} sumTree incur2
-                      in (i+j,incur3)
-                 else error ("sumTree: unknown tag " ++ show tag)
+sumTree :: Cursor a %1-> (Int64, Cursor a)
+sumTree !incur =
+    readTag incur &
+        \((Ur !tag), !incur1) ->
+            if tag `eqTag` leafTag
+            then readInt64 incur1 &
+                     \(Ur !i, !incur2) -> (i,incur2)
+            else if tag `eqTag` nodeTag
+                 then sumTree incur1 &
+                          \(!i,!incur2) ->
+                              sumTree incur2 &
+                                  \(!j,!incur3) ->
+                                      (Unsafe.toLinear2 (+) i j, incur3)
+                 else incur1 `lseq` (error ("sumTree: unknown tag " ++ show tag))
 
 printTree :: Cursor a -> IO (Cursor a)
 printTree incur = do
-    let (Ur !tag, incur1) = readTag incur
+    let ((Ur tag), incur1) = readTag incur
     if tag `eqTag` leafTag
         then do let (Ur i, incur2) = readInt64 incur1
                 putStr ("(Leaf " ++ show i ++ ")")
