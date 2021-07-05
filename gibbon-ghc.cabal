@@ -5,8 +5,11 @@ build-type:         Simple
 
 executable gibbon-ghc
     main-is:             Main.hs
-    other-modules:       Gibbon.Prim
-                         Bintree
+    other-modules:       Bintree
+                         LinearBintree
+                         Gibbon.Prim
+                         Gibbon.LinearPrim
+                         -- Gibbon.IO
     ghc-options:         -Wall -Wcompat -fdefer-typed-holes
     -- ghc-options:         -prof -fprof-auto
     ghc-options:         -ddump-simpl -ddump-to-file

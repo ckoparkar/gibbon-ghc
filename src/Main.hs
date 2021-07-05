@@ -12,6 +12,8 @@ import Control.Exception (evaluate)
 
 import Gibbon.Prim ( allocRegion )
 import Bintree
+-- import qualified Gibbon.LinearPrim as L ( allocRegion )
+import qualified LinearBintree as L
 
 --------------------------------------------------------------------------------
 
@@ -41,10 +43,27 @@ bench_main = do
   let (n,_) = sumTree out
   putStrLn $ "SUM: " ++ show n
 
+  putStr "\n"
+
   -- let !_out1 = buildTree out 25
   putStrLn "sumTree/25"
   (res,selftimed2,batchtime2) <- bench sumTree out
   putStrLn ("SELFTIMED: " ++ show selftimed2 ++ "\nBATCHTIME: " ++ show batchtime2 ++ "\n" ++ show res)
+
+  putStr "\n"
+
+  putStrLn "linear buildTree/25"
+  (_res,selftimed3,batchtime3) <- bench (L.buildTree out) 25
+  putStrLn ("SELFTIMED: " ++ show selftimed3 ++ "\nBATCHTIME: " ++ show batchtime3)
+  let (n2,_) = sumTree out
+  putStrLn $ "SUM: " ++ show n2
+
+  putStr "\n"
+
+  putStrLn "linear sumTree/25"
+  (res2,selftimed4,batchtime4) <- bench L.sumTree out
+  putStrLn ("SELFTIMED: " ++ show selftimed4 ++ "\nBATCHTIME: " ++ show batchtime4 ++ "\n" ++ show res2)
+
 
 -- bench_main_criterion :: IO ()
 -- bench_main_criterion = do
