@@ -2,7 +2,7 @@
 
 module Main where
 
--- import Criterion.Main
+-- import qualified Criterion.Main as C
 import Control.DeepSeq ( NFData, force )
 import Data.List       ( sort )
 import System.Mem      (performMajorGC)
@@ -67,13 +67,13 @@ bench_main = do
 
 -- bench_main_criterion :: IO ()
 -- bench_main_criterion = do
---     defaultMain
+--     C.defaultMain
 --       [
---         env (allocRegion (1*gB)) $ \ ~out -> bgroup "buildTree"
---              [ bench "25" $ nfAppIO (buildTree out) 25 ]
+--         C.env (allocRegion (1*gB)) $ \ ~out -> C.bgroup "buildTree"
+--              [ C.bench "25" $ C.whnf (buildTree out) 25 ]
 
---       , env (allocRegion (1*gB) >>= \out -> buildTree out 25) $ \ ~out1 -> bgroup "sumTree"
---              [ bench "25" $ nfAppIO sumTree out1 ]
+--       , C.env (allocRegion (1*gB) >>= \out -> pure $ buildTree out 25) $ \ ~out1 -> C.bgroup "sumTree"
+--              [ C.bench "25" $ C.nf sumTree out1 ]
 --       ]
 
 --------------------------------------------------------------------------------

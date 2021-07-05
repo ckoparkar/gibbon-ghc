@@ -14,7 +14,8 @@ executable gibbon-ghc
     -- ghc-options:         -prof -fprof-auto
     ghc-options:         -ddump-simpl -ddump-to-file
     build-depends:       base     >= 4.15 && < 4.16
-                       -- , criterion
+                       , ghc-prim
+                       , criterion
                        , deepseq
                        , time
                        , linear-base

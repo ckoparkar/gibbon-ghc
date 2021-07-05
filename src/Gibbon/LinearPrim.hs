@@ -59,7 +59,6 @@ writeTag ptr val =
     -- unsafeDupablePerformIO (poke (Ptr addr) (I8# t)) `seq`
     --    (Ptr addr `plusPtr` 1)
 
-
 readInt64 :: Cursor a %1-> (Ur Int64, Cursor a)
 {-# INLINE readInt64 #-}
 readInt64 ptr =
