@@ -1,0 +1,423 @@
+
+==================== Tidy Core ====================
+2021-07-19 17:34:40.380851127 UTC
+
+Result size of Tidy Core
+  = {terms: 164, types: 491, coercions: 22, joins: 0/0}
+
+-- RHS size: {terms: 3, types: 4, coercions: 0, joins: 0/0}
+Gibbon.LinearPrim.$fConsumablePtr1 :: forall {a}. Cursor a -> ()
+[GblId,
+ Arity=1,
+ Str=<L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@a_a1pB) _ [Occ=Dead] -> GHC.Tuple.()}]
+Gibbon.LinearPrim.$fConsumablePtr1
+  = \ (@a_a1pB) _ [Occ=Dead] -> GHC.Tuple.()
+
+-- RHS size: {terms: 9, types: 45, coercions: 3, joins: 0/0}
+Gibbon.LinearPrim.$fConsumablePtr_$cconsume
+  :: forall a. Cursor a %1 -> ()
+[GblId,
+ Arity=1,
+ Str=<L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@a_a1pB) (ptr_a1li [Occ=Once1] :: Cursor a_a1pB) ->
+                 case Unsafe.Coerce.unsafeEqualityProof
+                        @(*)
+                        @(GHC.Types.Any -> GHC.Types.Any)
+                        @((Cursor a_a1pB -> ()) %1 -> Cursor a_a1pB %1 -> ())
+                 of
+                 { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+                 ((\ (x_a1rx [Occ=Once1, OS=OneShot] :: GHC.Types.Any) -> x_a1rx)
+                  `cast` (Sub (Sym co_a1ry)
+                          :: (GHC.Types.Any -> GHC.Types.Any)
+                             ~R# ((Cursor a_a1pB -> ()) %1 -> Cursor a_a1pB %1 -> ())))
+                   (Gibbon.LinearPrim.$fConsumablePtr1 @a_a1pB) ptr_a1li
+                 }}]
+Gibbon.LinearPrim.$fConsumablePtr_$cconsume
+  = \ (@a_a1pB) (ptr_a1li :: Cursor a_a1pB) ->
+      case Unsafe.Coerce.unsafeEqualityProof
+             @(*)
+             @(GHC.Types.Any -> GHC.Types.Any)
+             @((Cursor a_a1pB -> ()) %1 -> Cursor a_a1pB %1 -> ())
+      of
+      { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+      ((\ (x_a1rx [OS=OneShot] :: GHC.Types.Any) -> x_a1rx)
+       `cast` (Sub (Sym co_a1ry)
+               :: (GHC.Types.Any -> GHC.Types.Any)
+                  ~R# ((Cursor a_a1pB -> ()) %1 -> Cursor a_a1pB %1 -> ())))
+        (Gibbon.LinearPrim.$fConsumablePtr1 @a_a1pB) ptr_a1li
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 7, joins: 0/0}
+Gibbon.LinearPrim.$fConsumablePtr [InlPrag=INLINE (sat-args=0)]
+  :: forall a. Consumable (Cursor a)
+[GblId[DFunId(nt)],
+ Arity=1,
+ Str=<L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=True)
+         Tmpl= Gibbon.LinearPrim.$fConsumablePtr_$cconsume
+               `cast` (forall (a :: <*>_N).
+                       Sym (Data.Unrestricted.Internal.Consumable.N:Consumable[0]
+                                <Cursor a>_N)
+                       :: (forall {a}. Cursor a %1 -> ())
+                          ~R# (forall {a}. Consumable (Cursor a)))}]
+Gibbon.LinearPrim.$fConsumablePtr
+  = Gibbon.LinearPrim.$fConsumablePtr_$cconsume
+    `cast` (forall (a :: <*>_N).
+            Sym (Data.Unrestricted.Internal.Consumable.N:Consumable[0]
+                     <Cursor a>_N)
+            :: (forall {a}. Cursor a %1 -> ())
+               ~R# (forall {a}. Consumable (Cursor a)))
+
+-- RHS size: {terms: 21, types: 33, coercions: 0, joins: 0/0}
+lvl_r1x2 :: forall {a}. Ptr a -> (Ur Int8, Ptr a)
+[GblId, Arity=1, Str=<S,1*U(U)>, Unf=OtherCon []]
+lvl_r1x2
+  = \ (@a_a1p1) (ds_d1qS :: Ptr a_a1p1) ->
+      case ds_d1qS of { Ptr addr_a1lE ->
+      GHC.Magic.runRW#
+        @'GHC.Types.LiftedRep
+        @(Ur Int8, Ptr a_a1p1)
+        (\ (s_aPq [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case readInt8OffAddr# @GHC.Prim.RealWorld addr_a1lE 0# s_aPq of
+           { (# ipv_s1rF, ipv1_s1rG #) ->
+           (Data.Unrestricted.Internal.Ur.Ur @Int8 (GHC.Int.I8# ipv1_s1rG),
+            GHC.Ptr.Ptr @a_a1p1 (plusAddr# addr_a1lE 1#))
+           })
+      }
+
+-- RHS size: {terms: 9, types: 69, coercions: 3, joins: 0/0}
+readTag [InlPrag=INLINE (sat-args=1)]
+  :: forall a. Cursor a %1 -> (Ur Tag, Cursor a)
+[GblId,
+ Arity=1,
+ Str=<L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@a_a1p1) (ptr_a1lC [Occ=Once1] :: Cursor a_a1p1) ->
+                 case Unsafe.Coerce.unsafeEqualityProof
+                        @(*)
+                        @(GHC.Types.Any -> GHC.Types.Any)
+                        @((Ptr a_a1p1 -> (Ur Int8, Ptr a_a1p1))
+                          %1 -> Ptr a_a1p1 %1 -> (Ur Int8, Ptr a_a1p1))
+                 of
+                 { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+                 ((\ (x_a1rx [Occ=Once1, OS=OneShot] :: GHC.Types.Any) -> x_a1rx)
+                  `cast` (Sub (Sym co_a1ry)
+                          :: (GHC.Types.Any -> GHC.Types.Any)
+                             ~R# ((Ptr a_a1p1 -> (Ur Int8, Ptr a_a1p1))
+                                  %1 -> Ptr a_a1p1 %1 -> (Ur Int8, Ptr a_a1p1))))
+                   (\ (ds_d1qS [Occ=Once1!] :: Ptr a_a1p1) ->
+                      case ds_d1qS of { Ptr addr_a1lE ->
+                      GHC.Magic.runRW#
+                        @'GHC.Types.LiftedRep
+                        @(Ur Int8, Ptr a_a1p1)
+                        (\ (s_aPq [Occ=Once1, OS=OneShot]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                           case readInt8OffAddr# @GHC.Prim.RealWorld addr_a1lE 0# s_aPq of
+                           { (# _ [Occ=Dead], ipv1_s1rQ [Occ=Once1] #) ->
+                           (Data.Unrestricted.Internal.Ur.Ur @Int8 (GHC.Int.I8# ipv1_s1rQ),
+                            GHC.Ptr.Ptr @a_a1p1 (plusAddr# addr_a1lE 1#))
+                           })
+                      })
+                   ptr_a1lC
+                 }}]
+readTag
+  = \ (@a_a1p1) (ptr_a1lC :: Cursor a_a1p1) ->
+      case Unsafe.Coerce.unsafeEqualityProof
+             @(*)
+             @(GHC.Types.Any -> GHC.Types.Any)
+             @((Ptr a_a1p1 -> (Ur Int8, Ptr a_a1p1))
+               %1 -> Ptr a_a1p1 %1 -> (Ur Int8, Ptr a_a1p1))
+      of
+      { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+      ((\ (x_a1rx [OS=OneShot] :: GHC.Types.Any) -> x_a1rx)
+       `cast` (Sub (Sym co_a1ry)
+               :: (GHC.Types.Any -> GHC.Types.Any)
+                  ~R# ((Ptr a_a1p1 -> (Ur Int8, Ptr a_a1p1))
+                       %1 -> Ptr a_a1p1 %1 -> (Ur Int8, Ptr a_a1p1))))
+        (lvl_r1x2 @a_a1p1) ptr_a1lC
+      }
+
+-- RHS size: {terms: 22, types: 19, coercions: 0, joins: 0/0}
+lvl1_r1x3 :: forall {a}. Ptr a -> Int8 -> Ptr a
+[GblId, Arity=2, Str=<S,1*U(U)><S,1*U(U)>, Unf=OtherCon []]
+lvl1_r1x3
+  = \ (@a_a1oo) (ds_d1qJ :: Ptr a_a1oo) (ds1_d1qK :: Int8) ->
+      case ds_d1qJ of { Ptr addr_a1lL ->
+      case ds1_d1qK of { I8# t_a1lM ->
+      GHC.Magic.runRW#
+        @'GHC.Types.LiftedRep
+        @(Ptr a_a1oo)
+        (\ (s_aPq [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case writeInt8OffAddr#
+                  @GHC.Prim.RealWorld addr_a1lL 0# t_a1lM s_aPq
+           of
+           { __DEFAULT ->
+           GHC.Ptr.Ptr @a_a1oo (plusAddr# addr_a1lL 1#)
+           })
+      }
+      }
+
+-- RHS size: {terms: 11, types: 58, coercions: 3, joins: 0/0}
+writeTag [InlPrag=INLINE (sat-args=2)]
+  :: forall a. Cursor a %1 -> Tag %1 -> Cursor a
+[GblId,
+ Arity=2,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@a_a1oo)
+                 (ptr_a1lI [Occ=Once1] :: Cursor a_a1oo)
+                 (val_a1lJ [Occ=Once1] :: Tag) ->
+                 case Unsafe.Coerce.unsafeEqualityProof
+                        @(*)
+                        @(GHC.Types.Any -> GHC.Types.Any)
+                        @((Ptr a_a1oo -> Int8 -> Ptr a_a1oo)
+                          %1 -> Ptr a_a1oo %1 -> Int8 %1 -> Ptr a_a1oo)
+                 of
+                 { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+                 ((\ (x_a1rx [Occ=Once1, OS=OneShot] :: GHC.Types.Any) -> x_a1rx)
+                  `cast` (Sub (Sym co_a1ry)
+                          :: (GHC.Types.Any -> GHC.Types.Any)
+                             ~R# ((Ptr a_a1oo -> Int8 -> Ptr a_a1oo)
+                                  %1 -> Ptr a_a1oo %1 -> Int8 %1 -> Ptr a_a1oo)))
+                   (\ (ds_d1qJ [Occ=Once1!] :: Ptr a_a1oo)
+                      (ds1_d1qK [Occ=Once1!] :: Int8) ->
+                      case ds_d1qJ of { Ptr addr_a1lL ->
+                      case ds1_d1qK of { I8# t_a1lM [Occ=Once1] ->
+                      GHC.Magic.runRW#
+                        @'GHC.Types.LiftedRep
+                        @(Ptr a_a1oo)
+                        (\ (s_aPq [Occ=Once1, OS=OneShot]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                           case writeInt8OffAddr#
+                                  @GHC.Prim.RealWorld addr_a1lL 0# t_a1lM s_aPq
+                           of
+                           { __DEFAULT ->
+                           GHC.Ptr.Ptr @a_a1oo (plusAddr# addr_a1lL 1#)
+                           })
+                      }
+                      })
+                   ptr_a1lI
+                   val_a1lJ
+                 }}]
+writeTag
+  = \ (@a_a1oo) (ptr_a1lI :: Cursor a_a1oo) (val_a1lJ :: Tag) ->
+      case Unsafe.Coerce.unsafeEqualityProof
+             @(*)
+             @(GHC.Types.Any -> GHC.Types.Any)
+             @((Ptr a_a1oo -> Int8 -> Ptr a_a1oo)
+               %1 -> Ptr a_a1oo %1 -> Int8 %1 -> Ptr a_a1oo)
+      of
+      { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+      ((\ (x_a1rx [OS=OneShot] :: GHC.Types.Any) -> x_a1rx)
+       `cast` (Sub (Sym co_a1ry)
+               :: (GHC.Types.Any -> GHC.Types.Any)
+                  ~R# ((Ptr a_a1oo -> Int8 -> Ptr a_a1oo)
+                       %1 -> Ptr a_a1oo %1 -> Int8 %1 -> Ptr a_a1oo)))
+        (lvl1_r1x3 @a_a1oo) ptr_a1lI val_a1lJ
+      }
+
+-- RHS size: {terms: 21, types: 33, coercions: 0, joins: 0/0}
+lvl2_r1x4 :: forall {a}. Ptr a -> (Ur Int64, Ptr a)
+[GblId, Arity=1, Str=<S,1*U(U)>, Unf=OtherCon []]
+lvl2_r1x4
+  = \ (@a_a1nI) (ds_d1qy :: Ptr a_a1nI) ->
+      case ds_d1qy of { Ptr addr_a1lR ->
+      GHC.Magic.runRW#
+        @'GHC.Types.LiftedRep
+        @(Ur Int64, Ptr a_a1nI)
+        (\ (s_aPq [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case readInt64OffAddr# @GHC.Prim.RealWorld addr_a1lR 0# s_aPq of
+           { (# ipv_s1s9, ipv1_s1sa #) ->
+           (Data.Unrestricted.Internal.Ur.Ur @Int64 (GHC.Int.I64# ipv1_s1sa),
+            GHC.Ptr.Ptr @a_a1nI (plusAddr# addr_a1lR 8#))
+           })
+      }
+
+-- RHS size: {terms: 9, types: 69, coercions: 3, joins: 0/0}
+readInt64 [InlPrag=INLINE (sat-args=1)]
+  :: forall a. Cursor a %1 -> (Ur Int64, Cursor a)
+[GblId,
+ Arity=1,
+ Str=<L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@a_a1nI) (ptr_a1lP [Occ=Once1] :: Cursor a_a1nI) ->
+                 case Unsafe.Coerce.unsafeEqualityProof
+                        @(*)
+                        @(GHC.Types.Any -> GHC.Types.Any)
+                        @((Ptr a_a1nI -> (Ur Int64, Ptr a_a1nI))
+                          %1 -> Ptr a_a1nI %1 -> (Ur Int64, Ptr a_a1nI))
+                 of
+                 { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+                 ((\ (x_a1rx [Occ=Once1, OS=OneShot] :: GHC.Types.Any) -> x_a1rx)
+                  `cast` (Sub (Sym co_a1ry)
+                          :: (GHC.Types.Any -> GHC.Types.Any)
+                             ~R# ((Ptr a_a1nI -> (Ur Int64, Ptr a_a1nI))
+                                  %1 -> Ptr a_a1nI %1 -> (Ur Int64, Ptr a_a1nI))))
+                   (\ (ds_d1qy [Occ=Once1!] :: Ptr a_a1nI) ->
+                      case ds_d1qy of { Ptr addr_a1lR ->
+                      GHC.Magic.runRW#
+                        @'GHC.Types.LiftedRep
+                        @(Ur Int64, Ptr a_a1nI)
+                        (\ (s_aPq [Occ=Once1, OS=OneShot]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                           case readInt64OffAddr# @GHC.Prim.RealWorld addr_a1lR 0# s_aPq of
+                           { (# _ [Occ=Dead], ipv1_s1sk [Occ=Once1] #) ->
+                           (Data.Unrestricted.Internal.Ur.Ur @Int64 (GHC.Int.I64# ipv1_s1sk),
+                            GHC.Ptr.Ptr @a_a1nI (plusAddr# addr_a1lR 8#))
+                           })
+                      })
+                   ptr_a1lP
+                 }}]
+readInt64
+  = \ (@a_a1nI) (ptr_a1lP :: Cursor a_a1nI) ->
+      case Unsafe.Coerce.unsafeEqualityProof
+             @(*)
+             @(GHC.Types.Any -> GHC.Types.Any)
+             @((Ptr a_a1nI -> (Ur Int64, Ptr a_a1nI))
+               %1 -> Ptr a_a1nI %1 -> (Ur Int64, Ptr a_a1nI))
+      of
+      { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+      ((\ (x_a1rx [OS=OneShot] :: GHC.Types.Any) -> x_a1rx)
+       `cast` (Sub (Sym co_a1ry)
+               :: (GHC.Types.Any -> GHC.Types.Any)
+                  ~R# ((Ptr a_a1nI -> (Ur Int64, Ptr a_a1nI))
+                       %1 -> Ptr a_a1nI %1 -> (Ur Int64, Ptr a_a1nI))))
+        (lvl2_r1x4 @a_a1nI) ptr_a1lP
+      }
+
+-- RHS size: {terms: 22, types: 19, coercions: 0, joins: 0/0}
+lvl3_r1x5 :: forall {a}. Ptr a -> Int64 -> Ptr a
+[GblId, Arity=2, Str=<S,1*U(U)><S,1*U(U)>, Unf=OtherCon []]
+lvl3_r1x5
+  = \ (@a_a1mX) (ds_d1qk :: Ptr a_a1mX) (ds1_d1ql :: Int64) ->
+      case ds_d1qk of { Ptr addr_a1lY ->
+      case ds1_d1ql of { I64# i_a1lZ ->
+      GHC.Magic.runRW#
+        @'GHC.Types.LiftedRep
+        @(Ptr a_a1mX)
+        (\ (s_aPq [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case writeInt64OffAddr#
+                  @GHC.Prim.RealWorld addr_a1lY 0# i_a1lZ s_aPq
+           of
+           { __DEFAULT ->
+           GHC.Ptr.Ptr @a_a1mX (plusAddr# addr_a1lY 8#)
+           })
+      }
+      }
+
+-- RHS size: {terms: 11, types: 58, coercions: 3, joins: 0/0}
+writeInt64 [InlPrag=INLINE (sat-args=2)]
+  :: forall a. Cursor a %1 -> Int64 -> Cursor a
+[GblId,
+ Arity=2,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@a_a1mX)
+                 (ptr_a1lV [Occ=Once1] :: Cursor a_a1mX)
+                 (val_a1lW [Occ=Once1] :: Int64) ->
+                 case Unsafe.Coerce.unsafeEqualityProof
+                        @(*)
+                        @(GHC.Types.Any -> GHC.Types.Any)
+                        @((Ptr a_a1mX -> Int64 -> Ptr a_a1mX)
+                          %1 -> Ptr a_a1mX %1 -> Int64 %1 -> Ptr a_a1mX)
+                 of
+                 { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+                 ((\ (x_a1rx [Occ=Once1, OS=OneShot] :: GHC.Types.Any) -> x_a1rx)
+                  `cast` (Sub (Sym co_a1ry)
+                          :: (GHC.Types.Any -> GHC.Types.Any)
+                             ~R# ((Ptr a_a1mX -> Int64 -> Ptr a_a1mX)
+                                  %1 -> Ptr a_a1mX %1 -> Int64 %1 -> Ptr a_a1mX)))
+                   (\ (ds_d1qk [Occ=Once1!] :: Ptr a_a1mX)
+                      (ds1_d1ql [Occ=Once1!] :: Int64) ->
+                      case ds_d1qk of { Ptr addr_a1lY ->
+                      case ds1_d1ql of { I64# i_a1lZ [Occ=Once1] ->
+                      GHC.Magic.runRW#
+                        @'GHC.Types.LiftedRep
+                        @(Ptr a_a1mX)
+                        (\ (s_aPq [Occ=Once1, OS=OneShot]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                           case writeInt64OffAddr#
+                                  @GHC.Prim.RealWorld addr_a1lY 0# i_a1lZ s_aPq
+                           of
+                           { __DEFAULT ->
+                           GHC.Ptr.Ptr @a_a1mX (plusAddr# addr_a1lY 8#)
+                           })
+                      }
+                      })
+                   ptr_a1lV
+                   val_a1lW
+                 }}]
+writeInt64
+  = \ (@a_a1mX) (ptr_a1lV :: Cursor a_a1mX) (val_a1lW :: Int64) ->
+      case Unsafe.Coerce.unsafeEqualityProof
+             @(*)
+             @(GHC.Types.Any -> GHC.Types.Any)
+             @((Ptr a_a1mX -> Int64 -> Ptr a_a1mX)
+               %1 -> Ptr a_a1mX %1 -> Int64 %1 -> Ptr a_a1mX)
+      of
+      { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+      ((\ (x_a1rx [OS=OneShot] :: GHC.Types.Any) -> x_a1rx)
+       `cast` (Sub (Sym co_a1ry)
+               :: (GHC.Types.Any -> GHC.Types.Any)
+                  ~R# ((Ptr a_a1mX -> Int64 -> Ptr a_a1mX)
+                       %1 -> Ptr a_a1mX %1 -> Int64 %1 -> Ptr a_a1mX)))
+        (lvl3_r1x5 @a_a1mX) ptr_a1lV val_a1lW
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Gibbon.LinearPrim.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Gibbon.LinearPrim.$trModule4 = "main"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Gibbon.LinearPrim.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 10}]
+Gibbon.LinearPrim.$trModule3
+  = GHC.Types.TrNameS Gibbon.LinearPrim.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Gibbon.LinearPrim.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 60 0}]
+Gibbon.LinearPrim.$trModule2 = "Gibbon.LinearPrim"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Gibbon.LinearPrim.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 10}]
+Gibbon.LinearPrim.$trModule1
+  = GHC.Types.TrNameS Gibbon.LinearPrim.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Gibbon.LinearPrim.$trModule :: GHC.Types.Module
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 10}]
+Gibbon.LinearPrim.$trModule
+  = GHC.Types.Module
+      Gibbon.LinearPrim.$trModule3 Gibbon.LinearPrim.$trModule1
+
+

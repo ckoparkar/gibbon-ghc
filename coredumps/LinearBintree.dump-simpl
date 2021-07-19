@@ -1,0 +1,692 @@
+
+==================== Tidy Core ====================
+2021-07-19 17:34:40.575853592 UTC
+
+Result size of Tidy Core
+  = {terms: 497, types: 1,067, coercions: 43, joins: 0/1}
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl_r3IX :: GHC.Int.Int8
+[GblId, Unf=OtherCon []]
+lvl_r3IX = GHC.Int.I8# 0#
+
+-- RHS size: {terms: 22, types: 19, coercions: 0, joins: 0/0}
+lvl1_r3IY
+  :: forall {a}. GHC.Ptr.Ptr a -> GHC.Int.Int8 -> GHC.Ptr.Ptr a
+[GblId, Arity=2, Str=<S,1*U(U)><S,1*U(U)>, Unf=OtherCon []]
+lvl1_r3IY
+  = \ (@a_a3g8)
+      (ds_d1qJ :: GHC.Ptr.Ptr a_a3g8)
+      (ds1_d1qK :: GHC.Int.Int8) ->
+      case ds_d1qJ of { GHC.Ptr.Ptr addr_a1lL ->
+      case ds1_d1qK of { GHC.Int.I8# t_a1lM ->
+      GHC.Magic.runRW#
+        @'GHC.Types.LiftedRep
+        @(GHC.Ptr.Ptr a_a3g8)
+        (\ (s_aPq [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case GHC.Prim.writeInt8OffAddr#
+                  @GHC.Prim.RealWorld addr_a1lL 0# t_a1lM s_aPq
+           of
+           { __DEFAULT ->
+           GHC.Ptr.Ptr @a_a3g8 (GHC.Prim.plusAddr# addr_a1lL 1#)
+           })
+      }
+      }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl2_r3IZ :: Int64
+[GblId, Unf=OtherCon []]
+lvl2_r3IZ = GHC.Int.I64# 1#
+
+-- RHS size: {terms: 22, types: 19, coercions: 0, joins: 0/0}
+lvl3_r3J0 :: forall {a}. GHC.Ptr.Ptr a -> Int64 -> GHC.Ptr.Ptr a
+[GblId, Arity=2, Str=<S,1*U(U)><S,1*U(U)>, Unf=OtherCon []]
+lvl3_r3J0
+  = \ (@a_a3g8)
+      (ds_d1qk :: GHC.Ptr.Ptr a_a3g8)
+      (ds1_d1ql :: Int64) ->
+      case ds_d1qk of { GHC.Ptr.Ptr addr_a1lY ->
+      case ds1_d1ql of { GHC.Int.I64# i_a1lZ ->
+      GHC.Magic.runRW#
+        @'GHC.Types.LiftedRep
+        @(GHC.Ptr.Ptr a_a3g8)
+        (\ (s_aPq [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case GHC.Prim.writeInt64OffAddr#
+                  @GHC.Prim.RealWorld addr_a1lY 0# i_a1lZ s_aPq
+           of
+           { __DEFAULT ->
+           GHC.Ptr.Ptr @a_a3g8 (GHC.Prim.plusAddr# addr_a1lY 8#)
+           })
+      }
+      }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl4_r3J1 :: GHC.Int.Int8
+[GblId, Unf=OtherCon []]
+lvl4_r3J1 = GHC.Int.I8# 1#
+
+Rec {
+-- RHS size: {terms: 49, types: 177, coercions: 9, joins: 0/0}
+LinearBintree.$wbuildTree [InlPrag=NOUSERINLINE[2],
+                           Occ=LoopBreaker]
+  :: forall {a}. GHC.Prim.Addr# %1 -> GHC.Prim.Int# -> Cursor a
+[GblId, Arity=2, Str=<L,U><S,1*U>, Unf=OtherCon []]
+LinearBintree.$wbuildTree
+  = \ (@a_s3Bu)
+      (ww_s3Bz :: GHC.Prim.Addr#)
+      (ww1_s3BD :: GHC.Prim.Int#) ->
+      case ww1_s3BD of ds_X2 {
+        __DEFAULT ->
+          case Unsafe.Coerce.unsafeEqualityProof
+                 @(*)
+                 @(GHC.Types.Any -> GHC.Types.Any)
+                 @((GHC.Ptr.Ptr a_s3Bu -> GHC.Int.Int8 -> GHC.Ptr.Ptr a_s3Bu)
+                   %1 -> GHC.Ptr.Ptr a_s3Bu
+                   %1 -> GHC.Int.Int8
+                   %1 -> GHC.Ptr.Ptr a_s3Bu)
+          of
+          { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+          case ((\ (x_X4 [OS=OneShot] :: GHC.Types.Any) -> x_X4)
+                `cast` (Sub (Sym co_a1ry)
+                        :: (GHC.Types.Any -> GHC.Types.Any)
+                           ~R# ((GHC.Ptr.Ptr a_s3Bu -> GHC.Int.Int8 -> GHC.Ptr.Ptr a_s3Bu)
+                                %1 -> GHC.Ptr.Ptr a_s3Bu
+                                %1 -> GHC.Int.Int8
+                                %1 -> GHC.Ptr.Ptr a_s3Bu)))
+                 (lvl1_r3IY @a_s3Bu) (GHC.Ptr.Ptr @a_s3Bu ww_s3Bz) lvl4_r3J1
+          of
+          { GHC.Ptr.Ptr ww3_X5 ->
+          case LinearBintree.$wbuildTree
+                 @a_s3Bu ww3_X5 (GHC.Prim.-# ds_X2 1#)
+          of
+          { GHC.Ptr.Ptr ww5_X9 ->
+          LinearBintree.$wbuildTree @a_s3Bu ww5_X9 (GHC.Prim.-# ds_X2 1#)
+          }
+          }
+          };
+        0# ->
+          case Unsafe.Coerce.unsafeEqualityProof
+                 @(*)
+                 @(GHC.Types.Any -> GHC.Types.Any)
+                 @((GHC.Ptr.Ptr a_s3Bu -> GHC.Int.Int8 -> GHC.Ptr.Ptr a_s3Bu)
+                   %1 -> GHC.Ptr.Ptr a_s3Bu
+                   %1 -> GHC.Int.Int8
+                   %1 -> GHC.Ptr.Ptr a_s3Bu)
+          of
+          { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+          case ((\ (x_a1rx [OS=OneShot] :: GHC.Types.Any) -> x_a1rx)
+                `cast` (Sub (Sym co_a1ry)
+                        :: (GHC.Types.Any -> GHC.Types.Any)
+                           ~R# ((GHC.Ptr.Ptr a_s3Bu -> GHC.Int.Int8 -> GHC.Ptr.Ptr a_s3Bu)
+                                %1 -> GHC.Ptr.Ptr a_s3Bu
+                                %1 -> GHC.Int.Int8
+                                %1 -> GHC.Ptr.Ptr a_s3Bu)))
+                 (lvl1_r3IY @a_s3Bu) (GHC.Ptr.Ptr @a_s3Bu ww_s3Bz) lvl_r3IX
+          of outcur1_X3
+          { GHC.Ptr.Ptr ipv_s3ki ->
+          case Unsafe.Coerce.unsafeEqualityProof
+                 @(*)
+                 @(GHC.Types.Any -> GHC.Types.Any)
+                 @((GHC.Ptr.Ptr a_s3Bu -> Int64 -> GHC.Ptr.Ptr a_s3Bu)
+                   %1 -> GHC.Ptr.Ptr a_s3Bu %1 -> Int64 %1 -> GHC.Ptr.Ptr a_s3Bu)
+          of
+          { Unsafe.Coerce.UnsafeRefl co1_X5 ->
+          ((\ (x_X6 [OS=OneShot] :: GHC.Types.Any) -> x_X6)
+           `cast` (Sub (Sym co1_X5)
+                   :: (GHC.Types.Any -> GHC.Types.Any)
+                      ~R# ((GHC.Ptr.Ptr a_s3Bu -> Int64 -> GHC.Ptr.Ptr a_s3Bu)
+                           %1 -> GHC.Ptr.Ptr a_s3Bu %1 -> Int64 %1 -> GHC.Ptr.Ptr a_s3Bu)))
+            (lvl3_r3J0 @a_s3Bu) outcur1_X3 lvl2_r3IZ
+          }
+          }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 12, types: 11, coercions: 0, joins: 0/0}
+buildTree [InlPrag=NOUSERINLINE[2]]
+  :: forall a. Cursor a %1 -> Int -> Cursor a
+[GblId,
+ Arity=2,
+ Str=<S,1*U(U)><S(S),1*U(1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@a_s3Bu)
+                 (w_s3Bv [Occ=Once1!] :: Cursor a_s3Bu)
+                 (w1_s3Bw [Occ=Once1!] :: Int) ->
+                 case w_s3Bv of { GHC.Ptr.Ptr ww1_s3Bz [Occ=Once1] ->
+                 case w1_s3Bw of { GHC.Types.I# ww3_s3BD [Occ=Once1] ->
+                 LinearBintree.$wbuildTree @a_s3Bu ww1_s3Bz ww3_s3BD
+                 }
+                 }}]
+buildTree
+  = \ (@a_s3Bu) (w_s3Bv :: Cursor a_s3Bu) (w1_s3Bw :: Int) ->
+      case w_s3Bv of { GHC.Ptr.Ptr ww1_s3Bz ->
+      case w1_s3Bw of { GHC.Types.I# ww3_s3BD ->
+      LinearBintree.$wbuildTree @a_s3Bu ww1_s3Bz ww3_s3BD
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+$dIP_r3J2 :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+$dIP_r3J2 = "error"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$dIP1_r3J3 :: [Char]
+[GblId]
+$dIP1_r3J3 = GHC.CString.unpackCString# $dIP_r3J2
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc_r3J4 :: Int
+[GblId, Unf=OtherCon []]
+loc_r3J4 = GHC.Types.I# 81#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc1_r3J5 :: Int
+[GblId, Unf=OtherCon []]
+loc1_r3J5 = GHC.Types.I# 45#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc2_r3J6 :: Int
+[GblId, Unf=OtherCon []]
+loc2_r3J6 = GHC.Types.I# 38#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+loc3_r3J7 :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+loc3_r3J7 = "src/LinearBintree.hs"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc4_r3J8 :: [Char]
+[GblId]
+loc4_r3J8 = GHC.CString.unpackCString# loc3_r3J7
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+LinearBintree.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+LinearBintree.$trModule2 = "LinearBintree"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc5_r3J9 :: [Char]
+[GblId]
+loc5_r3J9 = GHC.CString.unpackCString# LinearBintree.$trModule2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+LinearBintree.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+LinearBintree.$trModule4 = "main"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc6_r3Ja :: [Char]
+[GblId]
+loc6_r3Ja = GHC.CString.unpackCString# LinearBintree.$trModule4
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+$dIP2_r3Jb :: GHC.Stack.Types.SrcLoc
+[GblId, Unf=OtherCon []]
+$dIP2_r3Jb
+  = GHC.Stack.Types.SrcLoc
+      loc6_r3Ja
+      loc5_r3J9
+      loc4_r3J8
+      loc1_r3J5
+      loc2_r3J6
+      loc1_r3J5
+      loc_r3J4
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+$dIP3_r3Jc :: GHC.Stack.Types.CallStack
+[GblId, Unf=OtherCon []]
+$dIP3_r3Jc
+  = GHC.Stack.Types.PushCallStack
+      $dIP1_r3J3 $dIP2_r3Jb GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 21, types: 33, coercions: 0, joins: 0/0}
+lvl5_r3Jd
+  :: forall {a}. GHC.Ptr.Ptr a -> (Ur GHC.Int.Int8, GHC.Ptr.Ptr a)
+[GblId, Arity=1, Str=<S,1*U(U)>, Unf=OtherCon []]
+lvl5_r3Jd
+  = \ (@a_a3gI) (ds_d1qS :: GHC.Ptr.Ptr a_a3gI) ->
+      case ds_d1qS of { GHC.Ptr.Ptr addr_a1lE ->
+      GHC.Magic.runRW#
+        @'GHC.Types.LiftedRep
+        @(Ur GHC.Int.Int8, GHC.Ptr.Ptr a_a3gI)
+        (\ (s_aPq [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case GHC.Prim.readInt8OffAddr#
+                  @GHC.Prim.RealWorld addr_a1lE 0# s_aPq
+           of
+           { (# ipv_s1rP, ipv1_s1rQ #) ->
+           (Data.Unrestricted.Internal.Ur.Ur
+              @GHC.Int.Int8 (GHC.Int.I8# ipv1_s1rQ),
+            GHC.Ptr.Ptr @a_a3gI (GHC.Prim.plusAddr# addr_a1lE 1#))
+           })
+      }
+
+-- RHS size: {terms: 21, types: 33, coercions: 0, joins: 0/0}
+lvl6_r3Je :: forall {a}. GHC.Ptr.Ptr a -> (Ur Int64, GHC.Ptr.Ptr a)
+[GblId, Arity=1, Str=<S,1*U(U)>, Unf=OtherCon []]
+lvl6_r3Je
+  = \ (@a_a3gI) (ds_d1qy :: GHC.Ptr.Ptr a_a3gI) ->
+      case ds_d1qy of { GHC.Ptr.Ptr addr_a1lR ->
+      GHC.Magic.runRW#
+        @'GHC.Types.LiftedRep
+        @(Ur Int64, GHC.Ptr.Ptr a_a3gI)
+        (\ (s_aPq [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case GHC.Prim.readInt64OffAddr#
+                  @GHC.Prim.RealWorld addr_a1lR 0# s_aPq
+           of
+           { (# ipv_s1sj, ipv1_s1sk #) ->
+           (Data.Unrestricted.Internal.Ur.Ur @Int64 (GHC.Int.I64# ipv1_s1sk),
+            GHC.Ptr.Ptr @a_a3gI (GHC.Prim.plusAddr# addr_a1lR 8#))
+           })
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl7_r3Jf :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+lvl7_r3Jf = "sumTree: unknown tag "#
+
+-- RHS size: {terms: 15, types: 19, coercions: 4, joins: 0/0}
+lvl8_r3Jg :: forall {a}. GHC.Prim.Int# -> (Int64, Cursor a)
+[GblId, Arity=1, Str=<B,U>b, Cpr=b, Unf=OtherCon []]
+lvl8_r3Jg
+  = \ (@a_a3gI) (ipv_s3kH :: GHC.Prim.Int#) ->
+      error
+        @'GHC.Types.LiftedRep
+        @(Int64, Cursor a_a3gI)
+        ($dIP3_r3Jc
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: GHC.Stack.Types.CallStack
+                    ~R# (?callStack::GHC.Stack.Types.CallStack)))
+        (GHC.CString.unpackAppendCString#
+           lvl7_r3Jf
+           (case GHC.Show.$wshowSignedInt 0# ipv_s3kH (GHC.Types.[] @Char) of
+            { (# ww5_a2HR, ww6_a2HS #) ->
+            GHC.Types.: @Char ww5_a2HR ww6_a2HS
+            }))
+
+Rec {
+-- RHS size: {terms: 83, types: 292, coercions: 9, joins: 0/0}
+LinearBintree.$wsumTree [InlPrag=NOUSERINLINE[2], Occ=LoopBreaker]
+  :: forall {a}. GHC.Prim.Addr# %1 -> (# Int64, Cursor a #)
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []]
+LinearBintree.$wsumTree
+  = \ (@a_s3BI) (ww_s3BM :: GHC.Prim.Addr#) ->
+      case Unsafe.Coerce.unsafeEqualityProof
+             @(*)
+             @(GHC.Types.Any -> GHC.Types.Any)
+             @((GHC.Ptr.Ptr a_s3BI -> (Ur GHC.Int.Int8, GHC.Ptr.Ptr a_s3BI))
+               %1 -> GHC.Ptr.Ptr a_s3BI
+               %1 -> (Ur GHC.Int.Int8, GHC.Ptr.Ptr a_s3BI))
+      of
+      { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+      case ((\ (x_a1rx [OS=OneShot] :: GHC.Types.Any) -> x_a1rx)
+            `cast` (Sub (Sym co_a1ry)
+                    :: (GHC.Types.Any -> GHC.Types.Any)
+                       ~R# ((GHC.Ptr.Ptr a_s3BI -> (Ur GHC.Int.Int8, GHC.Ptr.Ptr a_s3BI))
+                            %1 -> GHC.Ptr.Ptr a_s3BI
+                            %1 -> (Ur GHC.Int.Int8, GHC.Ptr.Ptr a_s3BI))))
+             (lvl5_r3Jd @a_s3BI) (GHC.Ptr.Ptr @a_s3BI ww_s3BM)
+      of
+      { (ds_d3jO, incur1_a3f5) ->
+      case ds_d3jO of { Ur tag_a3f4 ->
+      case tag_a3f4 of { GHC.Int.I8# ipv_s3kH ->
+      case incur1_a3f5 of incur2_X5 { GHC.Ptr.Ptr ipv1_s3kK ->
+      case ipv_s3kH of wild3_X6 {
+        __DEFAULT ->
+          case Unsafe.Coerce.unsafeEqualityProof
+                 @(*)
+                 @(GHC.Types.Any -> GHC.Types.Any)
+                 @((Cursor a_s3BI -> ()) %1 -> Cursor a_s3BI %1 -> ())
+          of
+          { Unsafe.Coerce.UnsafeRefl co1_Xb [Dmd=<B,A>] ->
+          case lvl8_r3Jg @a_s3BI wild3_X6 of wild5_00 { }
+          };
+        0# ->
+          case Unsafe.Coerce.unsafeEqualityProof
+                 @(*)
+                 @(GHC.Types.Any -> GHC.Types.Any)
+                 @((GHC.Ptr.Ptr a_s3BI -> (Ur Int64, GHC.Ptr.Ptr a_s3BI))
+                   %1 -> GHC.Ptr.Ptr a_s3BI %1 -> (Ur Int64, GHC.Ptr.Ptr a_s3BI))
+          of
+          { Unsafe.Coerce.UnsafeRefl co1_X8 ->
+          case ((\ (x_X9 [OS=OneShot] :: GHC.Types.Any) -> x_X9)
+                `cast` (Sub (Sym co1_X8)
+                        :: (GHC.Types.Any -> GHC.Types.Any)
+                           ~R# ((GHC.Ptr.Ptr a_s3BI -> (Ur Int64, GHC.Ptr.Ptr a_s3BI))
+                                %1 -> GHC.Ptr.Ptr a_s3BI %1 -> (Ur Int64, GHC.Ptr.Ptr a_s3BI))))
+                 (lvl6_r3Je @a_s3BI) incur2_X5
+          of
+          { (ds1_d3js, incur3_a3f7) ->
+          case ds1_d3js of { Ur i_a3f6 ->
+          case i_a3f6 of i1_Xc { GHC.Int.I64# ipv2_s3ld ->
+          case incur3_a3f7 of incur4_Xd { GHC.Ptr.Ptr ipv3_s3lg ->
+          (# i1_Xc, incur4_Xd #)
+          }
+          }
+          }
+          }
+          };
+        1# ->
+          case LinearBintree.$wsumTree @a_s3BI ipv1_s3kK of
+          { (# ww2_s3C2, ww3_s3C3 #) ->
+          case ww2_s3C2 of i_Xb { GHC.Int.I64# ipv2_s3kU ->
+          case ww3_s3C3 of { GHC.Ptr.Ptr ww5_Xd ->
+          case LinearBintree.$wsumTree @a_s3BI ww5_Xd of
+          { (# ww7_Xf, ww8_Xg #) ->
+          case ww7_Xf of j_Xh { GHC.Int.I64# ipv3_s3l1 ->
+          case ww8_Xg of incur3_Xi { GHC.Ptr.Ptr ipv4_s3l4 ->
+          (# case Unsafe.Coerce.unsafeEqualityProof
+                    @(*)
+                    @(GHC.Types.Any -> GHC.Types.Any)
+                    @((Int64 -> Int64 -> Int64) %1 -> Int64 %1 -> Int64 %1 -> Int64)
+             of
+             { Unsafe.Coerce.UnsafeRefl co1_Xk ->
+             ((\ (x_Xl [OS=OneShot] :: GHC.Types.Any) -> x_Xl)
+              `cast` (Sub (Sym co1_Xk)
+                      :: (GHC.Types.Any -> GHC.Types.Any)
+                         ~R# ((Int64 -> Int64 -> Int64)
+                              %1 -> Int64 %1 -> Int64 %1 -> Int64)))
+               GHC.Int.$fNumInt64_$c+ i_Xb j_Xh
+             },
+             incur3_Xi #)
+          }
+          }
+          }
+          }
+          }
+          }
+      }
+      }
+      }
+      }
+      }
+      }
+end Rec }
+
+-- RHS size: {terms: 12, types: 20, coercions: 0, joins: 0/0}
+sumTree [InlPrag=NOUSERINLINE[2]]
+  :: forall a. Cursor a %1 -> (Int64, Cursor a)
+[GblId,
+ Arity=1,
+ Str=<S,1*U(U)>,
+ Cpr=m1,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@a_s3BI) (w_s3BJ [Occ=Once1!] :: Cursor a_s3BI) ->
+                 case w_s3BJ of { GHC.Ptr.Ptr ww1_s3BM [Occ=Once1] ->
+                 case LinearBintree.$wsumTree @a_s3BI ww1_s3BM of
+                 { (# ww3_s3C2 [Occ=Once1], ww4_s3C3 [Occ=Once1] #) ->
+                 (ww3_s3C2, ww4_s3C3)
+                 }
+                 }}]
+sumTree
+  = \ (@a_s3BI) (w_s3BJ :: Cursor a_s3BI) ->
+      case w_s3BJ of { GHC.Ptr.Ptr ww1_s3BM ->
+      case LinearBintree.$wsumTree @a_s3BI ww1_s3BM of
+      { (# ww3_s3C2, ww4_s3C3 #) ->
+      (ww3_s3C2, ww4_s3C3)
+      }
+      }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc7_r3Jh :: Int
+[GblId, Unf=OtherCon []]
+loc7_r3Jh = GHC.Types.I# 68#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc8_r3Ji :: Int
+[GblId, Unf=OtherCon []]
+loc8_r3Ji = GHC.Types.I# 61#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc9_r3Jj :: Int
+[GblId, Unf=OtherCon []]
+loc9_r3Jj = GHC.Types.I# 23#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+$dIP4_r3Jk :: GHC.Stack.Types.SrcLoc
+[GblId, Unf=OtherCon []]
+$dIP4_r3Jk
+  = GHC.Stack.Types.SrcLoc
+      loc6_r3Ja
+      loc5_r3J9
+      loc4_r3J8
+      loc8_r3Ji
+      loc9_r3Jj
+      loc8_r3Ji
+      loc7_r3Jh
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+$dIP5_r3Jl :: GHC.Stack.Types.CallStack
+[GblId, Unf=OtherCon []]
+$dIP5_r3Jl
+  = GHC.Stack.Types.PushCallStack
+      $dIP1_r3J3 $dIP4_r3Jk GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl9_r3Jm :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+lvl9_r3Jm = ")"#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl10_r3Jn :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+lvl10_r3Jn = "(Leaf "#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl11_r3Jo :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+lvl11_r3Jo = "(Node "#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl12_r3Jp :: [Char]
+[GblId]
+lvl12_r3Jp = GHC.CString.unpackCString# lvl11_r3Jo
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl13_r3Jq :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+lvl13_r3Jq = " "#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl14_r3Jr :: [Char]
+[GblId]
+lvl14_r3Jr = GHC.CString.unpackCString# lvl13_r3Jq
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl15_r3Js :: [Char]
+[GblId]
+lvl15_r3Js = GHC.CString.unpackCString# lvl9_r3Jm
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl16_r3Jt :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+lvl16_r3Jt = "printTree: unknown tag "#
+
+-- RHS size: {terms: 15, types: 18, coercions: 4, joins: 0/0}
+$wlvl_r3Ju :: forall {a}. GHC.Prim.Int# -> IO (Cursor a)
+[GblId, Arity=1, Str=<B,U>b, Cpr=b, Unf=OtherCon []]
+$wlvl_r3Ju
+  = \ (@a_s3BS) (ww_s3BW :: GHC.Prim.Int#) ->
+      error
+        @'GHC.Types.LiftedRep
+        @(IO (Cursor a_s3BS))
+        ($dIP5_r3Jl
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: GHC.Stack.Types.CallStack
+                    ~R# (?callStack::GHC.Stack.Types.CallStack)))
+        (GHC.CString.unpackAppendCString#
+           lvl16_r3Jt
+           (case GHC.Show.$wshowSignedInt 0# ww_s3BW (GHC.Types.[] @Char) of
+            { (# ww5_a2HR, ww6_a2HS #) ->
+            GHC.Types.: @Char ww5_a2HR ww6_a2HS
+            }))
+
+Rec {
+-- RHS size: {terms: 106, types: 289, coercions: 6, joins: 0/1}
+LinearBintree.printTree1 [Occ=LoopBreaker]
+  :: forall {a}.
+     Cursor a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Cursor a #)
+[GblId, Arity=2, Str=<L,U><L,U>, Unf=OtherCon []]
+LinearBintree.printTree1
+  = \ (@a_a3hu)
+      (incur_X1 :: Cursor a_a3hu)
+      (eta_B0 [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case Unsafe.Coerce.unsafeEqualityProof
+             @(*)
+             @(GHC.Types.Any -> GHC.Types.Any)
+             @((GHC.Ptr.Ptr a_a3hu -> (Ur GHC.Int.Int8, GHC.Ptr.Ptr a_a3hu))
+               %1 -> GHC.Ptr.Ptr a_a3hu
+               %1 -> (Ur GHC.Int.Int8, GHC.Ptr.Ptr a_a3hu))
+      of
+      { Unsafe.Coerce.UnsafeRefl co_a1ry ->
+      case ((\ (x_a1rx [OS=OneShot] :: GHC.Types.Any) -> x_a1rx)
+            `cast` (Sub (Sym co_a1ry)
+                    :: (GHC.Types.Any -> GHC.Types.Any)
+                       ~R# ((GHC.Ptr.Ptr a_a3hu -> (Ur GHC.Int.Int8, GHC.Ptr.Ptr a_a3hu))
+                            %1 -> GHC.Ptr.Ptr a_a3hu
+                            %1 -> (Ur GHC.Int.Int8, GHC.Ptr.Ptr a_a3hu))))
+             (lvl5_r3Jd @a_a3hu) incur_X1
+      of
+      { (ds_d3jU, incur1_a3hC) ->
+      case ds_d3jU of { Ur tag_a3hB ->
+      case tag_a3hB of { GHC.Int.I8# x_aQf ->
+      case x_aQf of wild4_X6 {
+        __DEFAULT -> case $wlvl_r3Ju @a_a3hu wild4_X6 of wild5_00 { };
+        0# ->
+          let {
+            ds1_s3pX [Dmd=<L,U(1*U(U),1*U)>] :: (Int64, Cursor a_a3hu)
+            [LclId]
+            ds1_s3pX
+              = case Unsafe.Coerce.unsafeEqualityProof
+                       @(*)
+                       @(GHC.Types.Any -> GHC.Types.Any)
+                       @((GHC.Ptr.Ptr a_a3hu -> (Ur Int64, GHC.Ptr.Ptr a_a3hu))
+                         %1 -> GHC.Ptr.Ptr a_a3hu %1 -> (Ur Int64, GHC.Ptr.Ptr a_a3hu))
+                of
+                { Unsafe.Coerce.UnsafeRefl co1_X8 ->
+                case ((\ (x1_X9 [OS=OneShot] :: GHC.Types.Any) -> x1_X9)
+                      `cast` (Sub (Sym co1_X8)
+                              :: (GHC.Types.Any -> GHC.Types.Any)
+                                 ~R# ((GHC.Ptr.Ptr a_a3hu -> (Ur Int64, GHC.Ptr.Ptr a_a3hu))
+                                      %1 -> GHC.Ptr.Ptr a_a3hu
+                                      %1 -> (Ur Int64, GHC.Ptr.Ptr a_a3hu))))
+                       (lvl6_r3Je @a_a3hu) incur1_a3hC
+                of
+                { (ds2_d3jR, incur2_a3hQ) ->
+                case ds2_d3jR of { Ur i_a3hP -> (i_a3hP, incur2_a3hQ) }
+                }
+                } } in
+          case GHC.IO.Handle.Text.hPutStr2
+                 GHC.IO.Handle.FD.stdout
+                 (GHC.CString.unpackAppendCString#
+                    lvl10_r3Jn
+                    (case ds1_s3pX of { (i_a3hP, incur2_a3hQ) ->
+                     case i_a3hP of { GHC.Int.I64# x#_a2Sr ->
+                     case GHC.Show.$wshowSignedInt 0# x#_a2Sr (GHC.Types.[] @Char) of
+                     { (# ww5_a2Su, ww6_a2Sv #) ->
+                     GHC.Base.++_$s++ @Char lvl15_r3Js ww5_a2Su ww6_a2Sv
+                     }
+                     }
+                     }))
+                 GHC.Types.False
+                 eta_B0
+          of
+          { (# ipv_a2KC, ipv1_a2KD #) ->
+          (# ipv_a2KC,
+             case ds1_s3pX of { (i_a3hP, incur2_a3hQ) -> incur2_a3hQ } #)
+          };
+        1# ->
+          case GHC.IO.Handle.Text.hPutStr2
+                 GHC.IO.Handle.FD.stdout lvl12_r3Jp GHC.Types.False eta_B0
+          of
+          { (# ipv_a2KC, ipv1_a2KD #) ->
+          case LinearBintree.printTree1 @a_a3hu incur1_a3hC ipv_a2KC of
+          { (# ipv2_a2Ry, ipv3_a2Rz #) ->
+          case GHC.IO.Handle.Text.hPutStr2
+                 GHC.IO.Handle.FD.stdout lvl14_r3Jr GHC.Types.False ipv2_a2Ry
+          of
+          { (# ipv4_X9, ipv5_Xa #) ->
+          case LinearBintree.printTree1 @a_a3hu ipv3_a2Rz ipv4_X9 of
+          { (# ipv6_Xc, ipv7_Xd #) ->
+          case GHC.IO.Handle.Text.hPutStr2
+                 GHC.IO.Handle.FD.stdout lvl15_r3Js GHC.Types.False ipv6_Xc
+          of
+          { (# ipv8_Xf, ipv9_Xg #) ->
+          (# ipv8_Xf, ipv7_Xd #)
+          }
+          }
+          }
+          }
+          }
+      }
+      }
+      }
+      }
+      }
+end Rec }
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+printTree :: forall a. Cursor a -> IO (Cursor a)
+[GblId,
+ Arity=2,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= LinearBintree.printTree1
+               `cast` (forall (a :: <*>_N).
+                       <Cursor a>_R %<'Many>_N ->_R Sym (GHC.Types.N:IO[0] <Cursor a>_R)
+                       :: (forall {a}.
+                           Cursor a
+                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, Cursor a #))
+                          ~R# (forall {a}. Cursor a -> IO (Cursor a)))}]
+printTree
+  = LinearBintree.printTree1
+    `cast` (forall (a :: <*>_N).
+            <Cursor a>_R %<'Many>_N ->_R Sym (GHC.Types.N:IO[0] <Cursor a>_R)
+            :: (forall {a}.
+                Cursor a
+                -> GHC.Prim.State# GHC.Prim.RealWorld
+                -> (# GHC.Prim.State# GHC.Prim.RealWorld, Cursor a #))
+               ~R# (forall {a}. Cursor a -> IO (Cursor a)))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+LinearBintree.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 10}]
+LinearBintree.$trModule3
+  = GHC.Types.TrNameS LinearBintree.$trModule4
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+LinearBintree.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 10}]
+LinearBintree.$trModule1
+  = GHC.Types.TrNameS LinearBintree.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+LinearBintree.$trModule :: GHC.Types.Module
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 10}]
+LinearBintree.$trModule
+  = GHC.Types.Module
+      LinearBintree.$trModule3 LinearBintree.$trModule1
+
+

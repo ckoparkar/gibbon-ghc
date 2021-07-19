@@ -1,0 +1,509 @@
+
+==================== Tidy Core ====================
+2021-07-19 17:34:40.474916741 UTC
+
+Result size of Tidy Core
+  = {terms: 376, types: 474, coercions: 19, joins: 0/3}
+
+Rec {
+-- RHS size: {terms: 56, types: 36, coercions: 0, joins: 0/1}
+Bintree.$wbuildTree [InlPrag=NOUSERINLINE[2], Occ=LoopBreaker]
+  :: forall {a}. GHC.Prim.Addr# -> GHC.Prim.Int# -> Cursor a
+[GblId, Arity=2, Str=<L,U><S,1*U>, Unf=OtherCon []]
+Bintree.$wbuildTree
+  = \ (@a_s32s)
+      (ww_s32x :: GHC.Prim.Addr#)
+      (ww1_s32B :: GHC.Prim.Int#) ->
+      case ww1_s32B of ds_X2 {
+        __DEFAULT ->
+          GHC.Magic.runRW#
+            @'GHC.Types.LiftedRep
+            @(Cursor a_s32s)
+            (\ (s_s2Gl [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+               case GHC.Prim.writeInt8OffAddr#
+                      @GHC.Prim.RealWorld ww_s32x 0# 1# s_s2Gl
+               of
+               { __DEFAULT ->
+               case Bintree.$wbuildTree
+                      @a_s32s (GHC.Prim.plusAddr# ww_s32x 1#) (GHC.Prim.-# ds_X2 1#)
+               of
+               { GHC.Ptr.Ptr ww3_X5 ->
+               Bintree.$wbuildTree @a_s32s ww3_X5 (GHC.Prim.-# ds_X2 1#)
+               }
+               });
+        0# ->
+          GHC.Magic.runRW#
+            @'GHC.Types.LiftedRep
+            @(Cursor a_s32s)
+            (\ (s_s2GC [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+               case GHC.Prim.writeInt8OffAddr#
+                      @GHC.Prim.RealWorld ww_s32x 0# 0# s_s2GC
+               of
+               { __DEFAULT ->
+               GHC.Magic.runRW#
+                 @'GHC.Types.LiftedRep
+                 @(Cursor a_s32s)
+                 (\ (s1_s2GH [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                    let {
+                      outcur1_s2Vh :: GHC.Prim.Addr#
+                      [LclId]
+                      outcur1_s2Vh = GHC.Prim.plusAddr# ww_s32x 1# } in
+                    case GHC.Prim.writeInt64OffAddr#
+                           @GHC.Prim.RealWorld outcur1_s2Vh 0# 1# s1_s2GH
+                    of
+                    { __DEFAULT ->
+                    GHC.Ptr.Ptr @a_s32s (GHC.Prim.plusAddr# outcur1_s2Vh 8#)
+                    })
+               })
+      }
+end Rec }
+
+-- RHS size: {terms: 12, types: 11, coercions: 0, joins: 0/0}
+buildTree [InlPrag=NOUSERINLINE[2]]
+  :: forall a. Cursor a -> Int -> Cursor a
+[GblId,
+ Arity=2,
+ Str=<S,1*U(U)><S(S),1*U(1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@a_s32s)
+                 (w_s32t [Occ=Once1!] :: Cursor a_s32s)
+                 (w1_s32u [Occ=Once1!] :: Int) ->
+                 case w_s32t of { GHC.Ptr.Ptr ww1_s32x [Occ=Once1] ->
+                 case w1_s32u of { GHC.Types.I# ww3_s32B [Occ=Once1] ->
+                 Bintree.$wbuildTree @a_s32s ww1_s32x ww3_s32B
+                 }
+                 }}]
+buildTree
+  = \ (@a_s32s) (w_s32t :: Cursor a_s32s) (w1_s32u :: Int) ->
+      case w_s32t of { GHC.Ptr.Ptr ww1_s32x ->
+      case w1_s32u of { GHC.Types.I# ww3_s32B ->
+      Bintree.$wbuildTree @a_s32s ww1_s32x ww3_s32B
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+$dIP_r355 :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+$dIP_r355 = "error"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$dIP1_r356 :: [Char]
+[GblId]
+$dIP1_r356 = GHC.CString.unpackCString# $dIP_r355
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc_r357 :: Int
+[GblId, Unf=OtherCon []]
+loc_r357 = GHC.Types.I# 66#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc1_r358 :: Int
+[GblId, Unf=OtherCon []]
+loc1_r358 = GHC.Types.I# 38#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc2_r359 :: Int
+[GblId, Unf=OtherCon []]
+loc2_r359 = GHC.Types.I# 23#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+loc3_r35a :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+loc3_r35a = "src/Bintree.hs"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc4_r35b :: [Char]
+[GblId]
+loc4_r35b = GHC.CString.unpackCString# loc3_r35a
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Bintree.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Bintree.$trModule2 = "Bintree"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc5_r35c :: [Char]
+[GblId]
+loc5_r35c = GHC.CString.unpackCString# Bintree.$trModule2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Bintree.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Bintree.$trModule4 = "main"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc6_r35d :: [Char]
+[GblId]
+loc6_r35d = GHC.CString.unpackCString# Bintree.$trModule4
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+$dIP2_r35e :: GHC.Stack.Types.SrcLoc
+[GblId, Unf=OtherCon []]
+$dIP2_r35e
+  = GHC.Stack.Types.SrcLoc
+      loc6_r35d
+      loc5_r35c
+      loc4_r35b
+      loc1_r358
+      loc2_r359
+      loc1_r358
+      loc_r357
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+$dIP3_r35f :: GHC.Stack.Types.CallStack
+[GblId, Unf=OtherCon []]
+$dIP3_r35f
+  = GHC.Stack.Types.PushCallStack
+      $dIP1_r356 $dIP2_r35e GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl_r35g :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+lvl_r35g = "sumTree: unknown tag "#
+
+-- RHS size: {terms: 15, types: 19, coercions: 4, joins: 0/0}
+$wlvl_r35h :: forall {a}. GHC.Prim.Int# -> (Int64, Cursor a)
+[GblId, Arity=1, Str=<B,U>b, Cpr=b, Unf=OtherCon []]
+$wlvl_r35h
+  = \ (@a_s32E) (ww_s32I :: GHC.Prim.Int#) ->
+      error
+        @'GHC.Types.LiftedRep
+        @(Int64, Cursor a_s32E)
+        ($dIP3_r35f
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: GHC.Stack.Types.CallStack
+                    ~R# (?callStack::GHC.Stack.Types.CallStack)))
+        (GHC.CString.unpackAppendCString#
+           lvl_r35g
+           (case GHC.Show.$wshowSignedInt 0# ww_s32I (GHC.Types.[] @Char) of
+            { (# ww5_a2HR, ww6_a2HS #) ->
+            GHC.Types.: @Char ww5_a2HR ww6_a2HS
+            }))
+
+Rec {
+-- RHS size: {terms: 61, types: 74, coercions: 0, joins: 0/1}
+Bintree.$wsumTree [InlPrag=NOUSERINLINE[2], Occ=LoopBreaker]
+  :: forall {a}. GHC.Prim.Addr# -> (Int64, Cursor a)
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []]
+Bintree.$wsumTree
+  = \ (@a_s32L) (ww_s32P :: GHC.Prim.Addr#) ->
+      GHC.Magic.runRW#
+        @'GHC.Types.LiftedRep
+        @(Int64, Cursor a_s32L)
+        (\ (s_s2ZS [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case GHC.Prim.readInt8OffAddr#
+                  @GHC.Prim.RealWorld ww_s32P 0# s_s2ZS
+           of
+           { (# ipv_sSD, ipv1_sSE #) ->
+           case ipv1_sSE of wild_X3 {
+             __DEFAULT -> $wlvl_r35h @a_s32L wild_X3;
+             0# ->
+               GHC.Magic.runRW#
+                 @'GHC.Types.LiftedRep
+                 @(Int64, Cursor a_s32L)
+                 (\ (s1_s2We [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                    let {
+                      ipv2_s2ZU :: GHC.Prim.Addr#
+                      [LclId]
+                      ipv2_s2ZU = GHC.Prim.plusAddr# ww_s32P 1# } in
+                    case GHC.Prim.readInt64OffAddr#
+                           @GHC.Prim.RealWorld ipv2_s2ZU 0# s1_s2We
+                    of
+                    { (# ipv3_sT1, ipv4_sT2 #) ->
+                    (GHC.Int.I64# ipv4_sT2,
+                     GHC.Ptr.Ptr @a_s32L (GHC.Prim.plusAddr# ipv2_s2ZU 8#))
+                    });
+             1# ->
+               case Bintree.$wsumTree @a_s32L (GHC.Prim.plusAddr# ww_s32P 1#) of
+               { (i_a2Cl, incur2_a2Cm) ->
+               case i_a2Cl of { GHC.Int.I64# ipv2_s2Jo ->
+               case incur2_a2Cm of { GHC.Ptr.Ptr ww2_Xb ->
+               case Bintree.$wsumTree @a_s32L ww2_Xb of { (j_a2Cx, incur3_a2Cy) ->
+               case j_a2Cx of { GHC.Int.I64# ipv3_s2Js ->
+               (GHC.Int.I64# (GHC.Prim.+# ipv2_s2Jo ipv3_s2Js), incur3_a2Cy)
+               }
+               }
+               }
+               }
+               }
+           }
+           })
+end Rec }
+
+-- RHS size: {terms: 7, types: 8, coercions: 0, joins: 0/0}
+sumTree [InlPrag=NOUSERINLINE[2]]
+  :: forall a. Cursor a -> (Int64, Cursor a)
+[GblId,
+ Arity=1,
+ Str=<S,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@a_s32L) (w_s32M [Occ=Once1!] :: Cursor a_s32L) ->
+                 case w_s32M of { GHC.Ptr.Ptr ww1_s32P [Occ=Once1] ->
+                 Bintree.$wsumTree @a_s32L ww1_s32P
+                 }}]
+sumTree
+  = \ (@a_s32L) (w_s32M :: Cursor a_s32L) ->
+      case w_s32M of { GHC.Ptr.Ptr ww1_s32P ->
+      Bintree.$wsumTree @a_s32L ww1_s32P
+      }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc7_r35i :: Int
+[GblId, Unf=OtherCon []]
+loc7_r35i = GHC.Types.I# 68#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc8_r35j :: Int
+[GblId, Unf=OtherCon []]
+loc8_r35j = GHC.Types.I# 54#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+$dIP4_r35k :: GHC.Stack.Types.SrcLoc
+[GblId, Unf=OtherCon []]
+$dIP4_r35k
+  = GHC.Stack.Types.SrcLoc
+      loc6_r35d
+      loc5_r35c
+      loc4_r35b
+      loc8_r35j
+      loc2_r359
+      loc8_r35j
+      loc7_r35i
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+$dIP5_r35l :: GHC.Stack.Types.CallStack
+[GblId, Unf=OtherCon []]
+$dIP5_r35l
+  = GHC.Stack.Types.PushCallStack
+      $dIP1_r356 $dIP4_r35k GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl1_r35m :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+lvl1_r35m = ")"#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl2_r35n :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+lvl2_r35n = "(Leaf "#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl3_r35o :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+lvl3_r35o = "(Node "#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl4_r35p :: [Char]
+[GblId]
+lvl4_r35p = GHC.CString.unpackCString# lvl3_r35o
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl5_r35q :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+lvl5_r35q = " "#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl6_r35r :: [Char]
+[GblId]
+lvl6_r35r = GHC.CString.unpackCString# lvl5_r35q
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl7_r35s :: [Char]
+[GblId]
+lvl7_r35s = GHC.CString.unpackCString# lvl1_r35m
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl8_r35t :: GHC.Prim.Addr#
+[GblId, Unf=OtherCon []]
+lvl8_r35t = "printTree: unknown tag "#
+
+-- RHS size: {terms: 15, types: 18, coercions: 4, joins: 0/0}
+$wlvl1_r35u :: forall {a}. GHC.Prim.Int# -> IO (Cursor a)
+[GblId, Arity=1, Str=<B,U>b, Cpr=b, Unf=OtherCon []]
+$wlvl1_r35u
+  = \ (@a_s32S) (ww_s32W :: GHC.Prim.Int#) ->
+      error
+        @'GHC.Types.LiftedRep
+        @(IO (Cursor a_s32S))
+        ($dIP5_r35l
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: GHC.Stack.Types.CallStack
+                    ~R# (?callStack::GHC.Stack.Types.CallStack)))
+        (GHC.CString.unpackAppendCString#
+           lvl8_r35t
+           (case GHC.Show.$wshowSignedInt 0# ww_s32W (GHC.Types.[] @Char) of
+            { (# ww5_a2HR, ww6_a2HS #) ->
+            GHC.Types.: @Char ww5_a2HR ww6_a2HS
+            }))
+
+Rec {
+-- RHS size: {terms: 97, types: 185, coercions: 0, joins: 0/1}
+Bintree.$wprintTree [InlPrag=NOUSERINLINE[2], Occ=LoopBreaker]
+  :: forall {a}.
+     GHC.Prim.Addr#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Cursor a #)
+[GblId, Arity=2, Str=<L,U><L,U>, Unf=OtherCon []]
+Bintree.$wprintTree
+  = \ (@a_s32Z)
+      (ww_s334 :: GHC.Prim.Addr#)
+      (w_s331 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      GHC.Magic.runRW#
+        @('GHC.Types.TupleRep
+            '[ 'GHC.Types.TupleRep '[], 'GHC.Types.LiftedRep])
+        @(# GHC.Prim.State# GHC.Prim.RealWorld, Cursor a_s32Z #)
+        (\ (s_s305 [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case GHC.Prim.readInt8OffAddr#
+                  @GHC.Prim.RealWorld ww_s334 0# s_s305
+           of
+           { (# ipv_sSD, ipv1_sSE #) ->
+           case ipv1_sSE of wild_X3 {
+             __DEFAULT -> case $wlvl1_r35u @a_s32Z wild_X3 of wild1_00 { };
+             0# ->
+               GHC.Magic.runRW#
+                 @('GHC.Types.TupleRep
+                     '[ 'GHC.Types.TupleRep '[], 'GHC.Types.LiftedRep])
+                 @(# GHC.Prim.State# GHC.Prim.RealWorld, Cursor a_s32Z #)
+                 (\ (s1_s2Wx [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                    let {
+                      ipv2_s307 :: GHC.Prim.Addr#
+                      [LclId]
+                      ipv2_s307 = GHC.Prim.plusAddr# ww_s334 1# } in
+                    case GHC.Prim.readInt64OffAddr#
+                           @GHC.Prim.RealWorld ipv2_s307 0# s1_s2Wx
+                    of
+                    { (# ipv3_sT1, ipv4_sT2 #) ->
+                    case GHC.IO.Handle.Text.hPutStr2
+                           GHC.IO.Handle.FD.stdout
+                           (GHC.CString.unpackAppendCString#
+                              lvl2_r35n
+                              (case GHC.Show.$wshowSignedInt 0# ipv4_sT2 (GHC.Types.[] @Char) of
+                               { (# ww5_a2Su, ww6_a2Sv #) ->
+                               GHC.Base.++_$s++ @Char lvl7_r35s ww5_a2Su ww6_a2Sv
+                               }))
+                           GHC.Types.False
+                           w_s331
+                    of
+                    { (# ipv5_a2KC, ipv6_a2KD #) ->
+                    (# ipv5_a2KC,
+                       GHC.Ptr.Ptr @a_s32Z (GHC.Prim.plusAddr# ipv2_s307 8#) #)
+                    }
+                    });
+             1# ->
+               case GHC.IO.Handle.Text.hPutStr2
+                      GHC.IO.Handle.FD.stdout lvl4_r35p GHC.Types.False w_s331
+               of
+               { (# ipv2_a2KC, ipv3_a2KD #) ->
+               case Bintree.$wprintTree
+                      @a_s32Z (GHC.Prim.plusAddr# ww_s334 1#) ipv2_a2KC
+               of
+               { (# ipv4_a2Ry, ipv5_a2Rz #) ->
+               case ipv5_a2Rz of { GHC.Ptr.Ptr ipv6_s2RD ->
+               case GHC.IO.Handle.Text.hPutStr2
+                      GHC.IO.Handle.FD.stdout lvl6_r35r GHC.Types.False ipv4_a2Ry
+               of
+               { (# ipv7_Xb, ipv8_Xc #) ->
+               case Bintree.$wprintTree @a_s32Z ipv6_s2RD ipv7_Xb of
+               { (# ipv9_Xf, ipv10_Xg #) ->
+               case ipv10_Xg of incur3_Xh { GHC.Ptr.Ptr ipv11_s2RI ->
+               case GHC.IO.Handle.Text.hPutStr2
+                      GHC.IO.Handle.FD.stdout lvl7_r35s GHC.Types.False ipv9_Xf
+               of
+               { (# ipv12_Xj, ipv13_Xk #) ->
+               (# ipv12_Xj, incur3_Xh #)
+               }
+               }
+               }
+               }
+               }
+               }
+               }
+           }
+           })
+end Rec }
+
+-- RHS size: {terms: 9, types: 10, coercions: 0, joins: 0/0}
+Bintree.printTree1 [InlPrag=NOUSERINLINE[2]]
+  :: forall {a}.
+     Cursor a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Cursor a #)
+[GblId,
+ Arity=2,
+ Str=<S,1*U(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@a_s32Z)
+                 (w_s330 [Occ=Once1!] :: Cursor a_s32Z)
+                 (w1_s331 [Occ=Once1] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case w_s330 of { GHC.Ptr.Ptr ww1_s334 [Occ=Once1] ->
+                 Bintree.$wprintTree @a_s32Z ww1_s334 w1_s331
+                 }}]
+Bintree.printTree1
+  = \ (@a_s32Z)
+      (w_s330 :: Cursor a_s32Z)
+      (w1_s331 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case w_s330 of { GHC.Ptr.Ptr ww1_s334 ->
+      Bintree.$wprintTree @a_s32Z ww1_s334 w1_s331
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+printTree :: forall a. Cursor a -> IO (Cursor a)
+[GblId,
+ Arity=2,
+ Str=<S,1*U(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Bintree.printTree1
+               `cast` (forall (a :: <*>_N).
+                       <Cursor a>_R %<'Many>_N ->_R Sym (GHC.Types.N:IO[0] <Cursor a>_R)
+                       :: (forall {a}.
+                           Cursor a
+                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, Cursor a #))
+                          ~R# (forall {a}. Cursor a -> IO (Cursor a)))}]
+printTree
+  = Bintree.printTree1
+    `cast` (forall (a :: <*>_N).
+            <Cursor a>_R %<'Many>_N ->_R Sym (GHC.Types.N:IO[0] <Cursor a>_R)
+            :: (forall {a}.
+                Cursor a
+                -> GHC.Prim.State# GHC.Prim.RealWorld
+                -> (# GHC.Prim.State# GHC.Prim.RealWorld, Cursor a #))
+               ~R# (forall {a}. Cursor a -> IO (Cursor a)))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Bintree.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 10}]
+Bintree.$trModule3 = GHC.Types.TrNameS Bintree.$trModule4
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Bintree.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 10}]
+Bintree.$trModule1 = GHC.Types.TrNameS Bintree.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Bintree.$trModule :: GHC.Types.Module
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 10}]
+Bintree.$trModule
+  = GHC.Types.Module Bintree.$trModule3 Bintree.$trModule1
+
+

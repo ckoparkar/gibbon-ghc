@@ -1,0 +1,278 @@
+
+==================== Tidy Core ====================
+2021-07-19 17:34:40.216691253 UTC
+
+Result size of Tidy Core
+  = {terms: 126, types: 162, coercions: 10, joins: 0/0}
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+eqTag [InlPrag=INLINE (sat-args=0)] :: Tag -> Tag -> Bool
+[GblId,
+ Arity=2,
+ Str=<S,1*U(U)><S,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=True)
+         Tmpl= eqInt8}]
+eqTag = eqInt8
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+sizeofTag [InlPrag=INLINE (sat-args=0)] :: Int64
+[GblId,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=True)
+         Tmpl= GHC.Int.I64# 1#}]
+sizeofTag = GHC.Int.I64# 1#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+sizeofInt64 [InlPrag=INLINE (sat-args=0)] :: Int64
+[GblId,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=True)
+         Tmpl= GHC.Int.I64# 8#}]
+sizeofInt64 = GHC.Int.I64# 8#
+
+-- RHS size: {terms: 13, types: 11, coercions: 0, joins: 0/0}
+bumpCur [InlPrag=INLINE (sat-args=2)]
+  :: forall a. Cursor a -> Int64 -> Cursor a
+[GblId,
+ Arity=2,
+ Str=<S,1*U(U)><S,1*U(U)>,
+ Cpr=m1,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@a_aOH)
+                 (ds_dQ3 [Occ=Once1!] :: Ptr a_aOH)
+                 (ds1_dQ4 [Occ=Once1!] :: Int64) ->
+                 case ds_dQ3 of { Ptr addr_aFo [Occ=Once1] ->
+                 case ds1_dQ4 of { I64# i_aFp [Occ=Once1] ->
+                 GHC.Ptr.Ptr @a_aOH (plusAddr# addr_aFo i_aFp)
+                 }
+                 }}]
+bumpCur
+  = \ (@a_aOH) (ds_dQ3 :: Ptr a_aOH) (ds1_dQ4 :: Int64) ->
+      case ds_dQ3 of { Ptr addr_aFo ->
+      case ds1_dQ4 of { I64# i_aFp ->
+      GHC.Ptr.Ptr @a_aOH (plusAddr# addr_aFo i_aFp)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 10, joins: 0/0}
+allocRegion [InlPrag=INLINE (sat-args=0)]
+  :: forall a. Int -> IO (Region a)
+[GblId,
+ Arity=2,
+ Str=<S,1*U(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=True)
+         Tmpl= Foreign.Marshal.Alloc.mallocBytes1
+               `cast` (forall (a :: <*>_N).
+                       <Int>_R %<'Many>_N ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+                       :: (forall {a}.
+                           Int
+                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, Ptr a #))
+                          ~R# (forall {a}. Int -> IO (Ptr a)))}]
+allocRegion
+  = Foreign.Marshal.Alloc.mallocBytes1
+    `cast` (forall (a :: <*>_N).
+            <Int>_R %<'Many>_N ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+            :: (forall {a}.
+                Int
+                -> GHC.Prim.State# GHC.Prim.RealWorld
+                -> (# GHC.Prim.State# GHC.Prim.RealWorld, Ptr a #))
+               ~R# (forall {a}. Int -> IO (Ptr a)))
+
+-- RHS size: {terms: 20, types: 30, coercions: 0, joins: 0/0}
+readTag [InlPrag=INLINE (sat-args=1)]
+  :: forall a. Cursor a -> (Tag, Cursor a)
+[GblId,
+ Arity=1,
+ Str=<S,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@a_aOp) (ds_dPR [Occ=Once1!] :: Ptr a_aOp) ->
+                 case ds_dPR of { Ptr addr_aFq ->
+                 GHC.Magic.runRW#
+                   @'GHC.Types.LiftedRep
+                   @(Int8, Ptr a_aOp)
+                   (\ (s_aPq [Occ=Once1, OS=OneShot]
+                         :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                      case readInt8OffAddr# @GHC.Prim.RealWorld addr_aFq 0# s_aPq of
+                      { (# _ [Occ=Dead], ipv1_sSE [Occ=Once1] #) ->
+                      (GHC.Int.I8# ipv1_sSE, GHC.Ptr.Ptr @a_aOp (plusAddr# addr_aFq 1#))
+                      })
+                 }}]
+readTag
+  = \ (@a_aOp) (ds_dPR :: Ptr a_aOp) ->
+      case ds_dPR of { Ptr addr_aFq ->
+      GHC.Magic.runRW#
+        @'GHC.Types.LiftedRep
+        @(Int8, Ptr a_aOp)
+        (\ (s_aPq [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case readInt8OffAddr# @GHC.Prim.RealWorld addr_aFq 0# s_aPq of
+           { (# ipv_sSv, ipv1_sSw #) ->
+           (GHC.Int.I8# ipv1_sSw, GHC.Ptr.Ptr @a_aOp (plusAddr# addr_aFq 1#))
+           })
+      }
+
+-- RHS size: {terms: 22, types: 19, coercions: 0, joins: 0/0}
+writeTag [InlPrag=INLINE (sat-args=2)]
+  :: forall a. Cursor a -> Tag -> Cursor a
+[GblId,
+ Arity=2,
+ Str=<S,1*U(U)><S,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@a_aOe)
+                 (ds_dPI [Occ=Once1!] :: Ptr a_aOe)
+                 (ds1_dPJ [Occ=Once1!] :: Int8) ->
+                 case ds_dPI of { Ptr addr_aFB ->
+                 case ds1_dPJ of { I8# t_aFC [Occ=Once1] ->
+                 GHC.Magic.runRW#
+                   @'GHC.Types.LiftedRep
+                   @(Ptr a_aOe)
+                   (\ (s_aPq [Occ=Once1, OS=OneShot]
+                         :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                      case writeInt8OffAddr# @GHC.Prim.RealWorld addr_aFB 0# t_aFC s_aPq
+                      of
+                      { __DEFAULT ->
+                      GHC.Ptr.Ptr @a_aOe (plusAddr# addr_aFB 1#)
+                      })
+                 }
+                 }}]
+writeTag
+  = \ (@a_aOe) (ds_dPI :: Ptr a_aOe) (ds1_dPJ :: Int8) ->
+      case ds_dPI of { Ptr addr_aFB ->
+      case ds1_dPJ of { I8# t_aFC ->
+      GHC.Magic.runRW#
+        @'GHC.Types.LiftedRep
+        @(Ptr a_aOe)
+        (\ (s_aPq [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case writeInt8OffAddr# @GHC.Prim.RealWorld addr_aFB 0# t_aFC s_aPq
+           of
+           { __DEFAULT ->
+           GHC.Ptr.Ptr @a_aOe (plusAddr# addr_aFB 1#)
+           })
+      }
+      }
+
+-- RHS size: {terms: 20, types: 30, coercions: 0, joins: 0/0}
+readInt64 [InlPrag=INLINE (sat-args=1)]
+  :: forall a. Cursor a -> (Int64, Cursor a)
+[GblId,
+ Arity=1,
+ Str=<S,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@a_aO0) (ds_dPy [Occ=Once1!] :: Ptr a_aO0) ->
+                 case ds_dPy of { Ptr addr_aFF ->
+                 GHC.Magic.runRW#
+                   @'GHC.Types.LiftedRep
+                   @(Int64, Ptr a_aO0)
+                   (\ (s_aPq [Occ=Once1, OS=OneShot]
+                         :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                      case readInt64OffAddr# @GHC.Prim.RealWorld addr_aFF 0# s_aPq of
+                      { (# _ [Occ=Dead], ipv1_sT2 [Occ=Once1] #) ->
+                      (GHC.Int.I64# ipv1_sT2, GHC.Ptr.Ptr @a_aO0 (plusAddr# addr_aFF 8#))
+                      })
+                 }}]
+readInt64
+  = \ (@a_aO0) (ds_dPy :: Ptr a_aO0) ->
+      case ds_dPy of { Ptr addr_aFF ->
+      GHC.Magic.runRW#
+        @'GHC.Types.LiftedRep
+        @(Int64, Ptr a_aO0)
+        (\ (s_aPq [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case readInt64OffAddr# @GHC.Prim.RealWorld addr_aFF 0# s_aPq of
+           { (# ipv_sST, ipv1_sSU #) ->
+           (GHC.Int.I64# ipv1_sSU, GHC.Ptr.Ptr @a_aO0 (plusAddr# addr_aFF 8#))
+           })
+      }
+
+-- RHS size: {terms: 22, types: 19, coercions: 0, joins: 0/0}
+writeInt64 [InlPrag=INLINE (sat-args=2)]
+  :: forall a. Cursor a -> Int64 -> Cursor a
+[GblId,
+ Arity=2,
+ Str=<S,1*U(U)><S,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@a_aNL)
+                 (ds_dP6 [Occ=Once1!] :: Ptr a_aNL)
+                 (ds1_dP7 [Occ=Once1!] :: Int64) ->
+                 case ds_dP6 of { Ptr addr_aFJ ->
+                 case ds1_dP7 of { I64# i_aFK [Occ=Once1] ->
+                 GHC.Magic.runRW#
+                   @'GHC.Types.LiftedRep
+                   @(Ptr a_aNL)
+                   (\ (s_aPq [Occ=Once1, OS=OneShot]
+                         :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                      case writeInt64OffAddr# @GHC.Prim.RealWorld addr_aFJ 0# i_aFK s_aPq
+                      of
+                      { __DEFAULT ->
+                      GHC.Ptr.Ptr @a_aNL (plusAddr# addr_aFJ 8#)
+                      })
+                 }
+                 }}]
+writeInt64
+  = \ (@a_aNL) (ds_dP6 :: Ptr a_aNL) (ds1_dP7 :: Int64) ->
+      case ds_dP6 of { Ptr addr_aFJ ->
+      case ds1_dP7 of { I64# i_aFK ->
+      GHC.Magic.runRW#
+        @'GHC.Types.LiftedRep
+        @(Ptr a_aNL)
+        (\ (s_aPq [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+           case writeInt64OffAddr# @GHC.Prim.RealWorld addr_aFJ 0# i_aFK s_aPq
+           of
+           { __DEFAULT ->
+           GHC.Ptr.Ptr @a_aNL (plusAddr# addr_aFJ 8#)
+           })
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Gibbon.Prim.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Gibbon.Prim.$trModule4 = "main"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Gibbon.Prim.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 10}]
+Gibbon.Prim.$trModule3 = GHC.Types.TrNameS Gibbon.Prim.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Gibbon.Prim.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+Gibbon.Prim.$trModule2 = "Gibbon.Prim"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Gibbon.Prim.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 10}]
+Gibbon.Prim.$trModule1 = GHC.Types.TrNameS Gibbon.Prim.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Gibbon.Prim.$trModule :: GHC.Types.Module
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 10}]
+Gibbon.Prim.$trModule
+  = GHC.Types.Module Gibbon.Prim.$trModule3 Gibbon.Prim.$trModule1
+
+
