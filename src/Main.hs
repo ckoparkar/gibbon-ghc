@@ -10,9 +10,8 @@ import Data.Time.Clock (getCurrentTime, diffUTCTime)
 import Control.Exception (evaluate)
 
 
-import Gibbon.Prim ( allocRegion )
+import Gibbon.Prim ( allocRegionIO )
 import Bintree
--- import qualified Gibbon.LinearPrim as L ( allocRegion )
 import qualified LinearBintree as L
 
 --------------------------------------------------------------------------------
@@ -26,7 +25,7 @@ main = bench_main
 
 debug_main :: IO ()
 debug_main = do
-    out <- allocRegion (1*gB)
+    out <- allocRegionIO (1*gB)
     let !_out1 = buildTree out 25
     -- _ <- printTree out
     let !(s,_) = sumTree out
@@ -35,7 +34,7 @@ debug_main = do
 
 bench_main :: IO ()
 bench_main = do
-  out <- allocRegion (1*gB)
+  out <- allocRegionIO (1*gB)
 
   putStrLn "buildTree/25"
   (_res,selftimed1,batchtime1) <- bench (buildTree out) 25
@@ -51,6 +50,22 @@ bench_main = do
   putStrLn ("SELFTIMED: " ++ show selftimed2 ++ "\nBATCHTIME: " ++ show batchtime2 ++ "\n" ++ show res)
 
   putStr "\n"
+
+  putStrLn "buildTreeIO/25"
+  (_res,selftimed1',batchtime1') <- benchIO (buildTreeIO out) 25
+  putStrLn ("SELFTIMED: " ++ show selftimed1' ++ "\nBATCHTIME: " ++ show batchtime1')
+  let (n',_) = sumTree out
+  putStrLn $ "SUM: " ++ show n'
+
+  putStr "\n"
+
+  putStrLn "sumTreeIO/25"
+  (res',selftimed2',batchtime2') <- benchIO sumTreeIO out
+  putStrLn ("SELFTIMED: " ++ show selftimed2' ++ "\nBATCHTIME: " ++ show batchtime2' ++ "\n" ++ show res')
+
+
+  putStr "\n"
+
 
   putStrLn "linear buildTree/25"
   (_res,selftimed3,batchtime3) <- bench (L.buildTree out) 25
@@ -69,10 +84,10 @@ bench_main = do
 -- bench_main_criterion = do
 --     C.defaultMain
 --       [
---         C.env (allocRegion (1*gB)) $ \ ~out -> C.bgroup "buildTree"
+--         C.env (allocRegionIO (1*gB)) $ \ ~out -> C.bgroup "buildTree"
 --              [ C.bench "25" $ C.whnf (buildTree out) 25 ]
 
---       , C.env (allocRegion (1*gB) >>= \out -> pure $ buildTree out 25) $ \ ~out1 -> C.bgroup "sumTree"
+--       , C.env (allocRegionIO (1*gB) >>= \out -> pure $ buildTree out 25) $ \ ~out1 -> C.bgroup "sumTree"
 --              [ C.bench "25" $ C.nf sumTree out1 ]
 --       ]
 

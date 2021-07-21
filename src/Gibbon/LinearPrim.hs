@@ -6,8 +6,9 @@
 
 module Gibbon.LinearPrim
     ( Region, Cursor, Tag, Int64
-    , eqTag, allocRegion, readTag, writeTag, readInt64, writeInt64
-    , sizeofTag, sizeofInt64, bumpCur
+    , eqTag , sizeofTag, sizeofInt64, bumpCur
+    , allocRegionIO, readTag, writeTag, readInt64, writeInt64
+
     ) where
 
 import GHC.Ptr               ( Ptr(..) )
@@ -26,7 +27,7 @@ import Prelude.Linear        ( Consumable(..), Ur(..) )
 -- import GHC.Int               ( Int(..))
 
 import Gibbon.Prim ( Region, Cursor, Tag
-                   , eqTag, sizeofTag, sizeofInt64, bumpCur, allocRegion
+                   , eqTag, sizeofTag, sizeofInt64, bumpCur, allocRegionIO
                    )
 
 --------------------------------------------------------------------------------
